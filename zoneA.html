@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <!-- 保留您原本的所有外部連結[cite: 2, 6] -->
     <link rel="stylesheet" href="src\icomoon\style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="main.css">
@@ -12,40 +11,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>和服發展之時間線</title>
+    <title>和服發展之時間線 - 衣為心聲</title>
 
     <style>
-        /* 漂浮 UI 樣式 - 確保 z-index 高於其他元素 */
+        /* 漂浮 UI 樣式 (已移除上方標題，更簡潔) */
         .floating-menu {
             position: fixed;
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
+            padding: 15px 20px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            z-index: 9999; /* 極高層級 */
-            border-left: 5px solid var(--color1); /* 使用主題紅色 #6C0820[cite: 5] */
-            width: 160px;
-            font-family: "Kiwi Maru", serif;
-        }
-
-        .current-era {
-            font-size: 14px;
-            color: var(--color1);
-            font-weight: 600;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-            text-align: left;
-        }
-
-        .current-era span {
-            display: block;
-            color: var(--primary-color);
-            margin-top: 2px;
-            font-size: 16px;
+            z-index: 9999;
+            border-left: 5px solid var(--color1); /* 紅色左側邊框[cite: 5] */
+            width: auto;
+            min-width: 140px;
         }
 
         .era-links {
@@ -56,41 +38,51 @@
         }
 
         .era-links li {
-            margin: 8px 0;
+            margin: 12px 0;
         }
 
         .era-links a {
             text-decoration: none;
             color: #666;
-            font-size: 14px;
+            font-size: 15px;
             transition: 0.3s;
+            display: block;
         }
 
-        .era-links a.active {
+        .era-links a:hover, .era-links a.active {
             color: var(--color1);
             font-weight: 600;
+            transform: translateX(5px); /* 點選或滑過時微幅右移 */
         }
 
-        /* 為了平滑滾動[cite: 6] */
-        html { scroll-behavior: smooth; }
+        /* 手機版適應 */
+        @media (max-width: 768px) {
+            .floating-menu {
+                right: 10px;
+                padding: 10px 15px;
+            }
+            .era-links a { font-size: 13px; }
+        }
 
-        /* 防止 body flex 影響 fixed 定位[cite: 5] */
+        html { scroll-behavior: smooth; }
         body { position: relative; }
     </style>
 </head>
 <body class="kiwi-maru-regular">
-    <!-- 漂浮選單 -->
+    
+    <!-- 漂浮選單 (僅保留連結變色) -->
     <div id="floating-ui" class="floating-menu">
-        <div class="current-era">目前時代：<span id="era-display">導覽開始</span></div>
         <ul class="era-links">
-            <li><a href="#era-yayoi" class="nav-item">彌生/奈良</a></li>
-            <li><a href="#era-heian" class="nav-item">平安/室町</a></li>
+            <li><a href="#era-yayoi" class="nav-item">彌生時代</a></li>
+            <li><a href="#era-nara" class="nav-item">奈良時代</a></li>
+            <li><a href="#era-heian" class="nav-item">平安時代</a></li>
+            <li><a href="#era-muromachi" class="nav-item">鎌倉至室町時代</a></li>
             <li><a href="#era-edo" class="nav-item">江戶時代</a></li>
-            <li><a href="#era-modern" class="nav-item">現代發展</a></li>
+            <li><a href="#era-modern" class="nav-item">明治時代至今</a></li>
         </ul>
     </div>
 
-    <!-- 原有 Banner 結構[cite: 6] -->
+    <!-- 上方 Banner -->
     <div class="banner hi-melody-regular">
         <div class="hamburger">
             <i class="ri-menu-line"></i>
@@ -112,76 +104,146 @@
     <div class="timeline">
         <div class="titles">
             <span class="top-title">和服發展之時間線</span>
-            <span class="exhibit-subtitle">從彌生時代的原始型態開始，建立完整的歷史脈絡。</span>
+            <span class="exhibit-subtitle">從彌生時代的原始型態（貫頭衣）開始，經由奈良、平安時代的本土化革新，至中世武家社會的結構精簡，建立完整的歷史脈絡[cite: 6]。</span>
         </div>
 
-        <!-- 區域 1：彌生與奈良時代[cite: 6] -->
+        <!-- 【1. 彌生時代】 -->
         <div class="exhibit" id="era-yayoi">
             <div class="exhibit-desc">
-                <span class="exhibit-title">史前至律令時代：原型確立與唐風影響</span>
+                <span class="exhibit-title">彌生時代</span>
+                <span class="exhibit-subtitle">服飾具備強烈的實用性與原始美學</span>
             </div>
             <div class="exhibit-item">
                 <div class="exhibit-img">
-                    <img src="./src/timeline/彌生時代_貫頭衣.jpg" alt="彌生時代">
+                    <img src="./src/timeline/彌生時代_貫頭衣.jpg" alt="彌生時代的貫頭衣">
                     <p class="img-desc">彌生時代的貫頭衣</p>
                 </div>
                 <div class="exhibit-description">
-                    <h3>彌生時代與奈良時代</h3>
-                    <p>和服最初型態為貫頭衣，隨後受唐文化影響確立階級體系[cite: 6]。</p>
+                    <h3>原型確立</h3>
+                    <p>和服最初的型態為簡單的布料組合。男性穿著一片式包裹的「卷布衣」，女性則穿著如彭丘般、將布料對折開孔套入的「貫頭衣」[cite: 6]。</p>
                 </div>
             </div>
         </div>
 
-        <!-- 區域 2：平安與室町時代[cite: 6] -->
+        <!-- 【2. 奈良時代】 -->
+        <div class="exhibit" id="era-nara">
+            <div class="exhibit-desc">
+                <span class="exhibit-title">奈良時代</span>
+                <span class="exhibit-subtitle">唐風影響下的階級體系</span>
+            </div>
+            <div class="exhibit-item">
+                <!-- 如需新增圖片，可複製這整段 exhibit-img 區塊 -->
+                <div class="exhibit-img">
+                    <img src="./src/timeline/奈良時代官方家族的代表服飾.jpg" alt="奈良時代代表服飾">
+                    <p class="img-desc">官方家族代表服飾</p>
+                </div>
+                <div class="exhibit-description">
+                    <h3>衣服令與右衽規範</h3>
+                    <p>受盛唐文化影響，日本頒布「衣服令」確立階級體系。統治階級仿效唐制身著華麗長袍，基層勞動力穿著「小袖」。「右衽」規範成為日後和服標準構造[cite: 6]。</p>
+                    
+                    <!-- 留白處：您可以自行填入文字 -->
+                    <!-- <p>（請在此填入其他補充說明...）</p> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 【3. 平安時代】 -->
         <div class="exhibit" id="era-heian">
             <div class="exhibit-desc">
-                <span class="exhibit-title">平安至室町時代：本土化美學</span>
+                <span class="exhibit-title">平安時代</span>
+                <span class="exhibit-subtitle">國風文化與直線裁技術成熟</span>
             </div>
             <div class="exhibit-item">
                 <div class="exhibit-img">
-                    <img src="./src/timeline/平安時代-十二單.jpg" alt="平安時代">
+                    <img src="./src/timeline/平安時代-十二單.jpg" alt="平安時代-十二單">
+                    <p class="img-desc">平安時代-十二單</p>
                 </div>
                 <div class="exhibit-description">
-                    <h3>平安至室町時代</h3>
-                    <p>發展出直線裁技術與「十二單」，小袖逐漸外著化成為雛形[cite: 6]。</p>
+                    <h3>本土化美學的巔峰</h3>
+                    <p>貴族女性發展出由多層絲綢堆疊的「十二單」，透過「襲色目」展現穿著者的品味與對季節變化的敏銳度[cite: 6]。</p>
                 </div>
             </div>
         </div>
 
-        <!-- 區域 3：江戶時代[cite: 6] -->
+        <!-- 【4. 鎌倉至室町時代】 -->
+        <div class="exhibit" id="era-muromachi">
+            <div class="exhibit-desc">
+                <span class="exhibit-title">鎌倉至室町時代</span>
+                <span class="exhibit-subtitle">武士階級的實用主義與結構精簡</span>
+            </div>
+            <div class="exhibit-item">
+                <div class="exhibit-img">
+                    <img src="./src/timeline/鎌倉時代武士家族代表服飾.jpg" alt="武士家族代表服飾">
+                    <p class="img-desc">武士家族代表服飾</p>
+                </div>
+                <div class="exhibit-description">
+                    <h3>「著物」雛形誕生</h3>
+                    <p>原本作為內衣的「小袖」逐漸外著化，成為各階層通用的日常服。女性捨棄繁重的大袖，改以綁帶固定腰間，為後世的腰帶（Obi）打下基礎[cite: 6]。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 【5. 江戶時代】 -->
         <div class="exhibit" id="era-edo">
             <div class="exhibit-desc">
-                <span class="exhibit-title">江戶時代：庶民美學</span>
+                <span class="exhibit-title">江戶時代</span>
+                <span class="exhibit-subtitle">庶民美學與規範下的藝術</span>
             </div>
             <div class="exhibit-item">
                 <div class="exhibit-img">
-                    <img src="./src/timeline/江戶時代武士家族代表服飾.jpg" alt="江戶時代">
+                    <img src="./src/timeline/江戶時代武士家族代表服飾.jpg" alt="江戶時代服飾">
+                    <p class="img-desc">江戶時代服飾</p>
+                </div>
+                <div class="exhibit-img">
+                    <img src="./src/timeline/小袖-分染纱绫地雪花棣棠花圖案.jpg" alt="精緻小袖">
+                    <p class="img-desc">分染纱绫地雪花棣棠花圖案小袖</p>
                 </div>
                 <div class="exhibit-description">
-                    <h3>江戶時代</h3>
-                    <p>町人階級崛起，在奢侈禁止令下發展出精緻的友禪染技術[cite: 6]。</p>
+                    <h3>規範下的創新</h3>
+                    <p>幕府雖有「奢侈禁止令」，卻激發庶民利用精細的織紋、染色技術（如友禪染）展現自我。此時和服已成為穿著者的社會語言[cite: 6]。</p>
                 </div>
             </div>
+            
+            <!-- 留白區塊：如果江戶時代需要第二個展品，取消下方註解並填入即可 -->
+            <!-- 
+            <div class="exhibit-item">
+                <div class="exhibit-img">
+                    <img src="此處填入您的圖片路徑" alt="預設圖片">
+                    <p class="img-desc">（請填寫圖片描述）</p>
+                </div>
+                <div class="exhibit-description">
+                    <h3>（請填寫子標題）</h3>
+                    <p>（請填寫文字內容...）</p>
+                </div>
+            </div> 
+            -->
         </div>
 
-        <!-- 區域 4：現代發展[cite: 6] -->
+        <!-- 【6. 明治時代至今】 -->
         <div class="exhibit" id="era-modern">
             <div class="exhibit-desc">
-                <span class="exhibit-title">明治時代至今：文化的象徵</span>
+                <span class="exhibit-title">明治時代至今</span>
+                <span class="exhibit-subtitle">從日常服裝轉為文化與儀式的象徵</span>
             </div>
             <div class="exhibit-item">
                 <div class="exhibit-img">
-                    <img src="./src/timeline/婚禮和服.jpg" alt="現代">
+                    <img src="./src/timeline/婚禮和服.jpg" alt="婚禮和服">
+                    <p class="img-desc">婚禮和服 (打掛)</p>
+                </div>
+                <div class="exhibit-img">
+                    <img src="./src/timeline/參加畢業典禮和服.jpg" alt="參加畢業典禮和服">
+                    <p class="img-desc">畢業典禮和服 (袴)</p>
                 </div>
                 <div class="exhibit-description">
-                    <h3>明治時代至今</h3>
-                    <p>和服轉向文化禮儀用途，成為傳統與民族認同的象徵[cite: 6]。</p>
+                    <h3>文化轉型</h3>
+                    <p>明治維新後洋服普及。二戰後，和服轉而與人生中的重要里程碑掛鉤，成為象徵日本傳統與民族認同的文化符碼[cite: 6]。</p>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <!-- 底部導覽[cite: 2] -->
+    <!-- 底部導覽 -->
     <div class="goback">  
         <span><a class="gobackbutton" href="index.html">首頁</a></span>
         <span><a class="gobackbutton" href="about.html">關於我們</a></span>
@@ -191,29 +253,22 @@
     </div>
 
     <script>
-        // 修正後的滾動偵測邏輯
+        // 僅處理導覽列變色的 JavaScript
         function updateNav() {
             const sections = document.querySelectorAll('.exhibit');
-            const eraDisplay = document.getElementById('era-display');
             const navLinks = document.querySelectorAll('.nav-item');
             
             let currentId = "";
-            let currentName = "導覽開始";
 
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                // 如果區塊頂部進入視窗上方 200px 以內
-                if (rect.top <= 200) {
+                // 區塊頂部進入視窗前 250px 內即判定為目前觀看區塊
+                if (rect.top <= 250) {
                     currentId = section.getAttribute('id');
-                    const titleNode = section.querySelector('.exhibit-title');
-                    if (titleNode) {
-                        currentName = titleNode.innerText.split('：')[0];
-                    }
                 }
             });
 
-            if (eraDisplay) eraDisplay.innerText = currentName;
-
+            // 更新選單 active 狀態
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + currentId) {
@@ -223,17 +278,18 @@
         }
 
         window.addEventListener('scroll', updateNav);
-        window.addEventListener('load', updateNav); // 頁面載入時先執行一次
+        window.addEventListener('load', updateNav);
 
-        // 平滑滾動補償[cite: 6]
+        // 平滑滾動與偏移量調整 (避免被最上方導覽條蓋住)
         document.querySelectorAll('.nav-item').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const target = document.querySelector(targetId);
+                
                 if (target) {
                     window.scrollTo({
-                        top: target.offsetTop - 80,
+                        top: target.offsetTop - 80, // 80px 為緩衝空間
                         behavior: 'smooth'
                     });
                 }
