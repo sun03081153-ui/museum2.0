@@ -10,7 +10,62 @@
         <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+document.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('.exhibit'); // 抓取所有時代區塊
+    const navSpan = document.querySelector('.current-era span');
+    const navLinks = document.querySelectorAll('.era-links a');
 
+    let currentEraId = "";
+    let currentEraTitle = "探索中";
+
+    // 1. 偵測目前在哪個區塊
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        // 當滾動超過區塊頂部（扣除一點緩衝距離，如 150px）時觸發
+        if (window.pageYOffset >= sectionTop - 150) {
+            currentEraId = section.getAttribute('id');
+            // 抓取該區塊內的標題文字[cite: 6]
+            const titleElement = section.querySelector('.exhibit-title');
+            if (titleElement) {
+                currentEraTitle = titleElement.innerText.split('：')[0]; 
+            }
+        }
+    });
+
+    // 2. 更新顯示文字
+    if (navSpan) {
+        navSpan.innerText = currentEraTitle;
+    }
+
+    // 3. 更新側邊選單的連結狀態 (讓對應的連結變色)
+    navLinks.forEach(link => {
+        link.style.color = "var(--primary-color)"; // 先恢復預設色[cite: 5]
+        link.style.fontWeight = "400";
+
+        if (link.getAttribute('href').includes(currentEraId)) {
+            link.style.color = "var(--color1)"; // 啟動中的連結變色[cite: 5]
+            link.style.fontWeight = "600";
+        }
+    });
+});
+
+// 點擊平滑滾動效果
+document.querySelectorAll('.era-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop - 100, // 預留空間避免被上方導覽列遮住
+                behavior: 'smooth'
+            });
+        }
+    });
+});
     <body class="kiwi-maru-regular">
         <div class="banner hi-melody-regular">
             <div class="hamburger">
