@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="main.css">
         <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
@@ -9,253 +10,84 @@
         <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-document.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('.exhibit'); // 抓取所有時代區塊
-    const navSpan = document.querySelector('.current-era span');
-    const navLinks = document.querySelectorAll('.era-links a');
-
-    let currentEraId = "";
-    let currentEraTitle = "探索中";
-
-    // 1. 偵測目前在哪個區塊
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        // 當滾動超過區塊頂部（扣除一點緩衝距離，如 150px）時觸發
-        if (window.pageYOffset >= sectionTop - 150) {
-            currentEraId = section.getAttribute('id');
-            // 抓取該區塊內的標題文字[cite: 6]
-            const titleElement = section.querySelector('.exhibit-title');
-            if (titleElement) {
-                currentEraTitle = titleElement.innerText.split('：')[0]; 
+        <title>和服發展之時間線 - 衣為心聲</title>
+        <style>
+            /* 漂浮導覽選單樣式 */
+            .floating-menu {
+                position: fixed;
+                right: 30px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255, 255, 255, 0.95);
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+                z-index: 1000;
+                border-left: 6px solid var(--color1); /* 使用您定義的深紅色 */
+                width: 200px;
+                transition: all 0.3s ease;
             }
-        }
-    });
 
-    // 2. 更新顯示文字
-    if (navSpan) {
-        navSpan.innerText = currentEraTitle;
-    }
+            .current-era {
+                font-size: 0.9rem;
+                color: var(--color1);
+                font-weight: 600;
+                margin-bottom: 15px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 8px;
+                text-align: left;
+            }
 
-    // 3. 更新側邊選單的連結狀態 (讓對應的連結變色)
-    navLinks.forEach(link => {
-        link.style.color = "var(--primary-color)"; // 先恢復預設色[cite: 5]
-        link.style.fontWeight = "400";
+            .current-era span {
+                display: block;
+                color: var(--primary-color);
+                margin-top: 4px;
+                font-size: 1.1rem;
+            }
 
-        if (link.getAttribute('href').includes(currentEraId)) {
-            link.style.color = "var(--color1)"; // 啟動中的連結變色[cite: 5]
-            link.style.fontWeight = "600";
-        }
-    });
-});
+            .era-links {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                text-align: left;
+            }
 
-// 點擊平滑滾動效果
-document.querySelectorAll('.era-links a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            window.scrollTo({
-                top: targetSection.offsetTop - 100, // 預留空間避免被上方導覽列遮住
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+            .era-links li {
+                margin: 12px 0;
+            }
+
+            .era-links a {
+                text-decoration: none;
+                color: #666;
+                font-size: 0.95rem;
+                transition: 0.3s;
+                display: block;
+            }
+
+            .era-links a:hover, .era-links a.active {
+                color: var(--color1);
+                font-weight: 600;
+                transform: translateX(5px);
+            }
+
+            /* 手機版適應：將選單縮小或置底 */
+            @media (max-width: 768px) {
+                .floating-menu {
+                    width: 140px;
+                    right: 10px;
+                    padding: 12px;
+                    font-size: 0.8rem;
+                }
+                .current-era span { font-size: 0.9rem; }
+                .era-links a { font-size: 0.8rem; }
+            }
+
+            /* 平滑滾動 */
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
+    </head>
     <body class="kiwi-maru-regular">
-        <div class="banner hi-melody-regular">
-            <div class="hamburger">
-                <i class="ri-menu-line"></i>
-            </div>
-            <nav class="navbar">
-                <a href="index.html">首頁</a>
-                <a href="about.html">關於我們</a>
-                <a href="knowledge.html">策展理念</a>
-                <a href="info.html">最新消息</a>
-                <a class="active" href="content.html">進入展覽</a>
-            </nav>
-            <h1></h1>
-            <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">    
-                <path d="
-                    M0,60 
-                    C 240,90 480,30 720,60 
-                    C 960,90 1200,30 1440,60 
-                    L1440,120 L0,120 Z" 
-                    fill="var(--color1)" 
-                    transform="translate(0, 5)" />
-                <path d="
-                    M0,60 
-                    C 240,90 480,30 720,60 
-                    C 960,90 1200,30 1440,60 
-                    L1440,120 L0,120 Z" 
-                    fill="whitesmoke"
-                    transform="translate(0, 40)" />
-            </svg>
-        </div>
-        <div class="timeline">
-            <!-- 漂浮 UI -->
-<div id="floating-ui" class="floating-menu">
-    <div class="current-era">目前時代：<span>載入中...</span></div>
-    <ul class="era-links">
-        <li><a href="#era-yayoi">彌生/奈良</a></li>
-        <li><a href="#era-heian">平安/室町</a></li>
-        <li><a href="#era-edo">江戶時代</a></li>
-        <li><a href="#era-modern">現代發展</a></li>
-    </ul>
-</div>
-
-<!-- 為現有的 exhibit 加上 id -->
-<div class="exhibit" id="era-yayoi"> 
-    <div class="exhibit-desc">
-        <span class="exhibit-title">史前至律令時代</span>
-        <!-- ... 原有內容 ... -->
-    </div>
-</div>
-
-<div class="exhibit" id="era-heian">
-    <div class="exhibit-desc">
-        <span class="exhibit-title">平安至室町時代</span>
-        <!-- ... 原有內容 ... -->
-    </div>
-</div>
-
-<div class="exhibit" id="era-edo">
-    <div class="exhibit-desc">
-        <span class="exhibit-title">江戶時代</span>
-        <!-- ... 原有內容 ... -->
-    </div>
-</div>
-
-<div class="exhibit" id="era-modern">
-    <div class="exhibit-desc">
-        <span class="exhibit-title">明治時代至今</span>
-        <!-- ... 原有內容 ... -->
-    </div>
-</div>
-            <div class="titles">
-                <span class="top-title">和服發展之時間線</span>
-                <span class="exhibit-subtitle">從彌生時代的原始型態（貫頭衣）開始，經由奈良、平安時代的本土化革新，
-                        至中世武家社會的結構精簡，建立完整的歷史脈絡。</span>
-            </div>
-            <div class="exhibit">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title"> 史前至律令時代：原型確立與唐風影響</span>
-                    <span class="exhibit-subtitle">在和服發展的初期，服飾具備強烈的實用性與身分標識功能。</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/彌生時代_貫頭衣.jpg" alt="Exhibit A1">
-                        <p class="img-desc">彌生時代的貫頭衣</p>
-                    </div>
-                    <div class="exhibit-description">
-                        <h3>彌生時代（約公元前300年-公元300年）</h3>
-                        <p>和服最初的型態為簡單的布料組合。男性穿著一片式包裹的「卷布衣」，女性則穿著如彭丘般、將布料對折開孔套入的「貫頭衣」。此時期服飾以天然素材為主，展現了與自然共生的原始美學。</p>
-                    </div>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/奈良時代官方家族的代表服飾.jpg" alt="Exhibit A2">
-                        <p class="img-desc">奈良時代官方家族的代表服飾</p>
-                    </div>
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/奈良時代官宮女服飾.png" alt="Exhibit A3">
-                        <p class="img-desc">奈良時代官宮女服飾</p>
-                    </div>
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/奈良時代官武官服飾.png" alt="Exhibit A4">
-                        <p class="img-desc">奈良時代官武官服飾</p>
-                    </div>
-                    <div class="exhibit-description">
-                        <h3>奈良時代（約公元710年-794年）</h3>
-                        <p>受盛唐文化影響，日本頒布「衣服令」確立階級體系。此時出現了明顯的雙重結構：統治階級仿效唐制身著華麗長袍（朝服），而基層勞動力則為了活動便利，穿著結構簡單的「小袖」作為內衣或日常服。這種「右衽（領口向右掩）」的規範，成為日後和服的標準構造。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="exhibit">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">平安至室町時代：本土化美學與結構革新</span>
-                    <span class="exhibit-subtitle">隨著「國風文化」興起，日本服飾擺脫唐風，走向獨特的本土化道路。</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/平安時代-十二單.jpg" alt="Exhibit A5">
-                        <p class="img-desc">平安時代-十二單</p>
-                    </div>
-                    <div class="exhibit-description">
-                        <h3>平安時代（約公元794年-1185年）</h3>
-                        <p>核心轉變在於「直線裁」技術的成熟。這種剪裁法不強調人體曲線，反而創造出寬大舒緩的廓形。貴族女性發展出由多層絲綢堆疊的「十二單」，透過「襲色目」展現穿著者的品味與對季節變化的敏銳度。</p>
-                    </div>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/鎌倉時代武士家族代表服飾.jpg" alt="Exhibit A6">
-                        <p class="img-desc">鎌倉時代武士家族代表服飾</p>
-                    </div>
-                    <div class="exhibit-description">
-                        <h3>鎌倉至室町時代（約公元1185年-1573年）</h3>
-                        <p>政治權力移轉至武士階級，服飾轉向簡約與實用。原本作為內衣的「小袖」逐漸外著化，
-                            成為各階層通用的日常服，這也標誌著現代「著物（Kimono）」雛形的誕生。女性捨棄繁重的大袖，
-                            改以綁帶固定腰間，為後世精巧的腰帶（Obi）美學打下基礎。
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="exhibit">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">江戶時代：庶民美學與規範下的藝術</span>
-                    <span class="exhibit-subtitle">江戶時代是和服裝飾藝術的顛峰。隨著商業經濟繁榮，町人（平民）階級崛起。</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/江戶時代武士家族代表服飾.jpg" alt="Exhibit A7">
-                        <p class="img-desc">江戶時代武士家族代表服飾</p>
-                    </div>
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/小袖-分染纱绫地雪花棣棠花圖案.jpg" alt="Exhibit A7">
-                        <p class="img-desc">小袖-分染纱绫地雪花棣棠花圖案</p>
-                    </div>
-                    <div class="exhibit-description">
-                        <h3>規範下的創新</h3>
-                        <p>幕府雖透過「奢侈禁止令」限制材質與色彩，卻激發了庶民在微小細節中追求精緻的動力。例如利用精細的織紋、染色技術（如友禪染）展現自我認同。此時，和服已不再只是衣物，而是穿著者的社會語言。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="exhibit">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">明治時代至今：從日常到文化的象徵</span>
-                    <span class="exhibit-subtitle">近代以來，和服經歷了功能上的劇烈轉向。</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/婚禮和服.jpg" alt="Exhibit A7">
-                        <p class="img-desc">婚禮和服</p>
-                    </div>
-                    <div class="exhibit-img">
-                        <img src="./src/timeline/參加畢業典禮和服.jpg" alt="Exhibit A7">
-                        <p class="img-desc">參加畢業典禮和服</p>
-                    </div>
-                    <div class="exhibit-description">
-                        <h3>文化轉型</h3>
-                        <p> 明治維新引進西洋化生產技術，雖然洋服逐漸普及，但也提升了和服的製作工藝。二戰後，洋服正式成為生活主流，和服轉而與人生中的重要里程碑掛鉤，如婚禮的「打掛」、畢業典禮的「袴」，成為象徵日本傳統與民族認同的文化符碼。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="goback">  
-                <span><a class="gobackbutton" href="index.html">首頁</a></span>
-                <span><a class="gobackbutton" href="about.html">關於我們</a></span>
-                <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
-                <span><a class="gobackbutton" href="info.html">最新消息</a></span>
-                <span><a class="gobackbutton" href="content.html">進入展覽</a></span>
-        </div>
-    
-    </body>
-    <script>
         
-    </script>
-</html>
+        <div id
