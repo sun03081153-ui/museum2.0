@@ -90,4 +90,190 @@
     </head>
     <body class="kiwi-maru-regular">
         
-        <div id
+        <div id="floating-ui" class="floating-menu">
+            <div class="current-era">觀看中時代：<span id="era-display">導覽開始</span></div>
+            <ul class="era-links">
+                <li><a href="#era-yayoi" class="nav-item">史前與律令時代</a></li>
+                <li><a href="#era-heian" class="nav-item">平安與室町時代</a></li>
+                <li><a href="#era-edo" class="nav-item">江戶時代</a></li>
+                <li><a href="#era-modern" class="nav-item">明治至現代</a></li>
+            </ul>
+        </div>
+
+        <div class="banner hi-melody-regular">
+            <div class="hamburger">
+                <i class="ri-menu-line"></i>
+            </div>
+            <nav class="navbar">
+                <a href="index.html">首頁</a>
+                <a href="about.html">關於我們</a>
+                <a href="knowledge.html">策展理念</a>
+                <a href="info.html">最新消息</a>
+                <a class="active" href="content.html">進入展覽</a>
+            </nav>
+            <h1>衣為心聲</h1>
+            <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">    
+                <path d="M0,60 C 240,90 480,30 720,60 C 960,90 1200,30 1440,60 L1440,120 L0,120 Z" fill="var(--color1)" transform="translate(0, 5)" />
+                <path d="M0,60 C 240,90 480,30 720,60 C 960,90 1200,30 1440,60 L1440,120 L0,120 Z" fill="whitesmoke" transform="translate(0, 40)" />
+            </svg>
+        </div>
+
+        <div class="timeline">
+            <div class="titles">
+                <span class="top-title">和服發展之時間線</span>
+                <span class="exhibit-subtitle">從彌生時代的原始型態（貫頭衣）開始，經由奈良、平安時代的本土化革新，至中世武家社會的結構精簡，建立完整的歷史脈絡。</span>
+            </div>
+
+            <div class="exhibit" id="era-yayoi">
+                <div class="exhibit-desc">
+                    <span class="exhibit-title">史前至律令時代：原型確立與唐風影響</span>
+                    <span class="exhibit-subtitle">在和服發展的初期，服飾具備強烈的實用性與身分標識功能。</span>
+                </div>
+                <div class="exhibit-item">
+                    <div class="exhibit-img">
+                        <img src="./src/timeline/彌生時代_貫頭衣.jpg" alt="彌生時代">
+                        <p class="img-desc">彌生時代的貫頭衣</p>
+                    </div>
+                    <div class="exhibit-description">
+                        <h3>彌生時代（約公元前300年-公元300年）</h3>
+                        <p>和服最初的型態為簡單的布料組合。男性穿著一片式包裹的「卷布衣」，女性則穿著如彭丘般、將布料對折開孔套入的「貫頭衣」。</p>
+                    </div>
+                </div>
+                <div class="exhibit-item">
+                    <div class="exhibit-img">
+                        <img src="./src/timeline/奈良時代官方家族的代表服飾.jpg" alt="奈良時代">
+                        <p class="img-desc">奈良時代代表服飾</p>
+                    </div>
+                    <div class="exhibit-description">
+                        <h3>奈良時代（約公元710年-794年）</h3>
+                        <p>受盛唐文化影響，日本頒布「衣服令」確立階級體系。出現了明顯的雙重結構：統治階級仿效唐制，而基層勞動力則穿著結構簡單的「小袖」。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exhibit" id="era-heian">
+                <div class="exhibit-desc">
+                    <span class="exhibit-title">平安至室町時代：本土化美學與結構革新</span>
+                    <span class="exhibit-subtitle">隨著「國風文化」興起，日本服飾擺脫唐風，走向獨特的本土化道路。</span>
+                </div>
+                <div class="exhibit-item">
+                    <div class="exhibit-img">
+                        <img src="./src/timeline/平安時代-十二單.jpg" alt="平安時代">
+                        <p class="img-desc">平安時代-十二單</p>
+                    </div>
+                    <div class="exhibit-description">
+                        <h3>平安時代（約公元794年-1185年）</h3>
+                        <p>核心轉變在於「直線裁」技術的成熟。貴族女性發展出由多層絲綢堆疊的「十二單」，透過「襲色目」展現對季節變化的敏銳度。</p>
+                    </div>
+                </div>
+                <div class="exhibit-item">
+                    <div class="exhibit-img">
+                        <img src="./src/timeline/鎌倉時代武士家族代表服飾.jpg" alt="中世時代">
+                        <p class="img-desc">鎌倉時代武士服飾</p>
+                    </div>
+                    <div class="exhibit-description">
+                        <h3>鎌倉至室町時代（約公元1185年-1573年）</h3>
+                        <p>政治權力移轉至武士階級，服飾轉向簡約與實用。原本作為內衣的「小袖」逐漸外著化，成為現代「著物」的雛形。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exhibit" id="era-edo">
+                <div class="exhibit-desc">
+                    <span class="exhibit-title">江戶時代：庶民美學與規範下的藝術</span>
+                    <span class="exhibit-subtitle">江戶時代是和服裝飾藝術的顛峰。隨著商業經濟繁榮，町人（平民）階級崛起。</span>
+                </div>
+                <div class="exhibit-item">
+                    <div class="exhibit-img">
+                        <img src="./src/timeline/江戶時代武士家族代表服飾.jpg" alt="江戶時代">
+                        <p class="img-desc">江戶時代代表服飾</p>
+                    </div>
+                    <div class="exhibit-img">
+                        <img src="./src/timeline/小袖-分染纱绫地雪花棣棠花圖案.jpg" alt="小袖">
+                        <p class="img-desc">精緻的友禪染小袖</p>
+                    </div>
+                    <div class="exhibit-description">
+                        <h3>規範下的創新</h3>
+                        <p>幕府透過「奢侈禁止令」限制材質，卻激發庶民在微小細節中追求精緻的動力，例如利用精細織紋與染色技術展現自我。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exhibit" id="era-modern">
+                <div class="exhibit-desc">
+                    <span class="exhibit-title">明治時代至今：從日常到文化的象徵</span>
+                    <span class="exhibit-subtitle">近代以來，和服經歷了功能上的劇烈轉向。</span>
+                </div>
+                <div class="exhibit-item">
+                    <div class="exhibit-img">
+                        <img src="./src/timeline/婚禮和服.jpg" alt="現代和服">
+                        <p class="img-desc">傳統婚禮和服</p>
+                    </div>
+                    <div class="exhibit-img">
+                        <img src="./src/timeline/參加畢業典禮和服.jpg" alt="畢業和服">
+                        <p class="img-desc">畢業典禮用的袴</p>
+                    </div>
+                    <div class="exhibit-description">
+                        <h3>文化轉型</h3>
+                        <p>明治維新後洋服普及。二戰後，和服轉而與人生重要里程碑掛鉤，成為象徵日本傳統與民族認同的文化符碼。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="goback">  
+            <span><a class="gobackbutton" href="index.html">首頁</a></span>
+            <span><a class="gobackbutton" href="about.html">關於我們</a></span>
+            <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
+            <span><a class="gobackbutton" href="info.html">最新消息</a></span>
+            <span><a class="gobackbutton" href="content.html">進入展覽</a></span>
+        </div>
+
+        <script>
+            // 監聽滾動事件
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.exhibit');
+                const eraDisplay = document.getElementById('era-display');
+                const navLinks = document.querySelectorAll('.nav-item');
+
+                let currentId = "";
+                let currentName = "導覽開始";
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // 當畫面滾動到距離區塊頂部 200px 時觸發
+                    if (pageYOffset >= sectionTop - 200) {
+                        currentId = section.getAttribute('id');
+                        const title = section.querySelector('.exhibit-title').innerText;
+                        currentName = title.split('：')[0]; // 只取冒號前的名稱
+                    }
+                });
+
+                // 更新 UI 文字
+                eraDisplay.innerText = currentName;
+
+                // 更新選單連結狀態
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // 選單平滑滾動偏移補償（避免被頂部導航遮住）
+            document.querySelectorAll('.nav-item').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
