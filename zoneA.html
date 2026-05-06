@@ -10,6 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+
     <body class="kiwi-maru-regular">
         <div class="banner hi-melody-regular">
             <div class="hamburger">
@@ -41,6 +42,45 @@
             </svg>
         </div>
         <div class="timeline">
+            <!-- 漂浮 UI -->
+<div id="floating-ui" class="floating-menu">
+    <div class="current-era">目前時代：<span>載入中...</span></div>
+    <ul class="era-links">
+        <li><a href="#era-yayoi">彌生/奈良</a></li>
+        <li><a href="#era-heian">平安/室町</a></li>
+        <li><a href="#era-edo">江戶時代</a></li>
+        <li><a href="#era-modern">現代發展</a></li>
+    </ul>
+</div>
+
+<!-- 為現有的 exhibit 加上 id -->
+<div class="exhibit" id="era-yayoi"> 
+    <div class="exhibit-desc">
+        <span class="exhibit-title">史前至律令時代</span>
+        <!-- ... 原有內容 ... -->
+    </div>
+</div>
+
+<div class="exhibit" id="era-heian">
+    <div class="exhibit-desc">
+        <span class="exhibit-title">平安至室町時代</span>
+        <!-- ... 原有內容 ... -->
+    </div>
+</div>
+
+<div class="exhibit" id="era-edo">
+    <div class="exhibit-desc">
+        <span class="exhibit-title">江戶時代</span>
+        <!-- ... 原有內容 ... -->
+    </div>
+</div>
+
+<div class="exhibit" id="era-modern">
+    <div class="exhibit-desc">
+        <span class="exhibit-title">明治時代至今</span>
+        <!-- ... 原有內容 ... -->
+    </div>
+</div>
             <div class="titles">
                 <span class="top-title">和服發展之時間線</span>
                 <span class="exhibit-subtitle">從彌生時代的原始型態（貫頭衣）開始，經由奈良、平安時代的本土化革新，
@@ -158,6 +198,7 @@
                 <span><a class="gobackbutton" href="info.html">最新消息</a></span>
                 <span><a class="gobackbutton" href="content.html">進入展覽</a></span>
         </div>
+    
     </body>
     <script>
         
