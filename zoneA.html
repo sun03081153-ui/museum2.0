@@ -66,6 +66,70 @@
 
         html { scroll-behavior: smooth; }
         body { position: relative; }
+    .timeline-visual {
+    position: relative;
+    width: 80%;
+    margin: 60px auto 80px auto;
+    padding: 20px 0;
+}
+
+/* 中央橫線 */
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color1); /* 使用主題紅色[cite: 5] */
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.timeline-points {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.tp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+}
+
+.tp-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--color1); /* 使用主題紅色[cite: 5] */
+    border-radius: 50%;
+    margin: 15px 0;
+    border: 3px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.tp-era {
+    font-weight: 500;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+.tp-year {
+    font-size: 0.85rem;
+    color: #888;
+    white-space: nowrap;
+}
+
+/* 手機版縮放控制 */
+@media (max-width: 768px) {
+    .timeline-visual { width: 95%; }
+    .tp-era { font-size: 0.9rem; }
+    .tp-year { font-size: 0.7rem; }
+    .tp { width: 60px; }
+}
     </style>
 </head>
 <body class="kiwi-maru-regular">
@@ -101,9 +165,52 @@
         </svg>
     </div>
 
-    <div class="timeline">
+    <div class="timeline">  
         <div class="titles">
             <span class="top-title">和服發展之時間線</span>
+            <div class="titles">
+    <span class="top-title">和服發展之時間線</span>
+    <span class="exhibit-subtitle">...（原本的文字內容）...</span>
+</div>
+
+<div class="timeline-visual">
+    <div class="timeline-line"></div>
+    <div class="timeline-points">
+        <div class="tp">
+            <span class="tp-era">彌生</span>
+            <div class="tp-dot"></div>
+            <span class="tp-year">BC 300</span>
+        </div>
+        <div class="tp">
+            <span class="tp-era">奈良</span>
+            <div class="tp-dot"></div>
+            <span class="tp-year">AD 710</span>
+        </div>
+        <div class="tp">
+            <span class="tp-era">平安</span>
+            <div class="tp-dot"></div>
+            <span class="tp-year">AD 794</span>
+        </div>
+        <div class="tp">
+            <span class="tp-era">鎌倉室町</span>
+            <div class="tp-dot"></div>
+            <span class="tp-year">AD 1185</span>
+        </div>
+        <div class="tp">
+            <span class="tp-era">江戶</span>
+            <div class="tp-dot"></div>
+            <span class="tp-year">AD 1603</span>
+        </div>
+        <div class="tp">
+            <span class="tp-era">現代</span>
+            <div class="tp-dot"></div>
+            <span class="tp-year">AD 1868</span>
+        </div>
+    </div>
+</div>
+
+<div class="exhibit" id="era-yayoi"> 
+    ...
             <span class="exhibit-subtitle">從彌生時代的原始型態（貫頭衣）開始，經由奈良、平安時代的本土化革新，至中世武家社會的結構精簡，建立完整的歷史脈絡。</span>
         </div>
 
