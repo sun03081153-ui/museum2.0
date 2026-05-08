@@ -10,6 +10,21 @@
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>衣為心聲-進入展覽</title>
+        <script src="theme.js"></script>
+
+    <script>
+
+        // 放在 head：在網頁畫出來前先套用顏色，防止閃爍
+
+        const savedColor = localStorage.getItem('kimonoThemeColor');
+
+        if (savedColor) {
+
+            document.documentElement.style.setProperty('--color1', savedColor);
+
+        }
+
+    </script>
 </head>
 <body class="kiwi-maru-regular">
     <div class="banner hi-melody-regular">
