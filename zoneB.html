@@ -10,6 +10,21 @@
         <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>江戶時期未婚女性之服飾</title>
+        <script src="theme.js"></script>
+
+    <script>
+
+        // 放在 head：在網頁畫出來前先套用顏色，防止閃爍
+
+        const savedColor = localStorage.getItem('kimonoThemeColor');
+
+        if (savedColor) {
+
+            document.documentElement.style.setProperty('--color1', savedColor);
+
+        }
+
+    </script>
     </head>
     <body class="kiwi-maru-regular">
         <div class="banner hi-melody-regular">
