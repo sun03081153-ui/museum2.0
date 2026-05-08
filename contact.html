@@ -22,24 +22,47 @@
             <a href="info.html">最新消息</a>
             <a href="content.html">進入展覽</a>
         </nav>
-        <h1>關於我們</h1>
+        <h1>聯絡我們</h1>
         <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">    
             <path d="
                 M0,60 
                 C 240,90 480,30 720,60 
                 C 960,90 1200,30 1440,60 
                 L1440,120 L0,120 Z" 
-                fill="var(--color2)" 
+                fill="var(--color1)" 
                 transform="translate(0, 5)" />
             <path d="
                 M0,60 
                 C 240,90 480,30 720,60 
                 C 960,90 1200,30 1440,60 
                 L1440,120 L0,120 Z" 
-                fill="#fff" 
+                fill="whitesmoke" 
                 transform="translate(0, 40)" />
         </svg>
     </div>
+    <div class="contact-content">
+        <div class="titles" style="margin-top: 20px;">
+            <span class="title">如果您對展覽有任何問題，歡迎隨時聯絡我們！</span>
+        </div>
+        <div class="contact-info">
+            <p><span class="icon-mail"></span> Email: contact@example.com</p>
+        </div>
+        <div class="contact-form">
+            <form action="submit_form.php" method="post">
+                <label for="name">姓名:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">留言內容:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">送出</button>
+            </form>
+        </div>
+    </div>
+
     <div class="goback">  
             <span><a class="gobackbutton" href="index.html">首頁</a></span>
             <span><a class="gobackbutton" href="about.html">關於我們</a></span>
