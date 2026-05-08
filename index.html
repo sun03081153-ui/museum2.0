@@ -109,11 +109,13 @@
     duration: 0.8,
     ease: "back.out(1.7)"     // 帶有一點點彈跳感的效果
   });
-    function changeTheme(color) {
-            // 立即改變畫面上所有的 --color1 變數
-            document.documentElement.style.setProperty('--color1', color);
-            // 存入瀏覽器紀錄，讓其他分頁也能讀取
-            localStorage.setItem('kimonoThemeColor', color);
-        }
+  
+  // 3. 切換顏色的函數（這裡的名字要跟 onclick 裡面的一模一樣）
+  function changeThemeColor(color) {
+      // 立即改變畫面上所有的 --color1 變數
+      document.documentElement.style.setProperty('--color1', color);
+      // 存入瀏覽器紀錄，讓其他分頁也能讀取
+      localStorage.setItem('kimonoThemeColor', color);
+  }
 </script>
 </html>
