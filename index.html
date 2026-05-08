@@ -17,6 +17,14 @@
 <body class="kiwi-maru-regular">
     
     <div class="main-banner hi-melody-regular">
+      <div class="theme-switcher">
+    <p>和服色彩體驗</p>
+    <div class="color-options">
+        <div class="color-btn" style="background-color: #6C0820;" onclick="changeThemeColor('#6C0820')"></div>
+        <div class="color-btn" style="background-color: #4A6935;" onclick="changeThemeColor('#4A6935')"></div>
+        <div class="color-btn" style="background-color: #3F5671;" onclick="changeThemeColor('#3F5671')"></div>
+    </div>
+</div>
         <div class="hamburger">
             <i class="ri-menu-line"></i>
         </div>
@@ -83,7 +91,7 @@
   gsap.from(".start-main", {
     scrollTrigger: {
       trigger: ".start-main", 
-      start: "top 90%",       // 比文字稍晚一點觸發
+      start: "top 80%",       // 比文字稍晚一點觸發
       markers: false,
       toggleActions: "play none none reverse"
     },

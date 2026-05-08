@@ -6,8 +6,8 @@
     --gray: rgb(233, 233, 233);
 
     --color1: #6C0820;
-    --color2: #fee6ef;
-    --color3: #4884BA;
+    --color2: #c00;
+    --color3: #a00;
 
     --fs-base: clamp(14px, 1.8vw, 18px);
 
@@ -558,45 +558,128 @@ select{
     display: block;
     margin: 0 auto 15px auto; /* 上0、左右自動、下15px */
 }
+
+.gant-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 40px 0px; 
+    margin: auto;
+}
+
+.gant-chart img {
+    width: 400px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.gant-chart iframe {
+    width: 60%;
+    height: 600px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.references {
+    background-color: white;
+    padding: 40px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.references .reference-items{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+    text-align: left;
+}
 /* -----------------------About Page Style----------------------- */
 /* -----------------------Content Page Style----------------------- */
 .kimono-main {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    padding:0px;
-    margin: 20px;
+    width: 80%;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .block {
+    width: 100%;       
+    height: 400px;    
+    margin-right: 40px;
+    background: #f0f0f0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 200px;
-    border-radius: 10px;
-    font-size: var(--fs-h3);
-    font-weight: 500;
-    color: white;
-    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.12) ;
-    -webkit-box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.12) ;
-    -moz-box-shadow: 1px 1px 2px 2px rgba(71, 46, 8, 0.12) ;
+    justify-content: center;
+    border-radius: 15px;
+    /* 確保縮放和陰影有平滑過渡 */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+    overflow: hidden; 
 }
 
-
-.kimono-main a{
+/* 讓連結撐滿整個 block，方便內容排列 */
+.kimono-main a {
     text-decoration: none;
     color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* 讓標題跟敘述上下排 */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-#blockA{
-    background-image: radial-gradient(circle at center, #18191d00, #18191db3),url("./src/timeline/參加畢業典禮和服.jpg");
-    background-size: cover;    /* Fills the block */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat;
+/* 標題樣式 */
+.block-title {
+    font-size: var(--fs-h1);
+    font-weight: 500;
+    margin-bottom: 10px;
+    transition: transform 0.4s ease; /* 讓標題稍微往上移動的動態 */
 }
 
-.block:hover{
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+/* 敘述文字樣式 (預設隱藏) */
+.block-desc {
+    font-size: 1.5rem;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(20px); /* 從下方 20px 的位置浮上來 */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    text-align: center;
+    max-width: 80%;
+}
+
+/* --- 背景設定保持不變 --- */
+#blockA {
+    background-image: radial-gradient(circle at center, #18191d00, #18191db3), url("./src/content1.jpg");
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+#blockB {
+    background-image: radial-gradient(circle at center, #18191d00, #18191db3), url("./src/content2.JPG");
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+#blockC {
+    background-image: radial-gradient(circle at center, #18191d00, #18191db3), url("./src/content3.jpg");
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+
+/* --- Hover 效果區 --- */
+
+
+/* 當 block 被 hover 時，標題微調位置 */
+.block:hover .block-title {
+    transform: translateY(-5px);
+}
+
+/* 當 block 被 hover 時，敘述顯示出來 */
+.block:hover .block-desc {
+    opacity: 1;
+    transform: translateY(0);
 }
 /* -----------------------Content Page Style----------------------- */
 /* -----------------------Zone A Page Style----------------------- */
@@ -646,3 +729,299 @@ select{
     color: var(--primary-color);
 }
 /* -----------------------Zone A Page Style----------------------- */
+/* -----------------------Zone B Page Style----------------------- */
+/* -----------------------Zone B Page Style----------------------- */
+/* -----------------------Zone C Page Style----------------------- */
+/* -----------------------Zone C Page Style----------------------- */
+/* -----------------------Zone Navigation Style----------------------- */
+/* floating nav menu */
+.floating-wrapper {
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    transform: translateY(-30%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* 按鈕靠右 */
+}
+
+/* 圓形或膠囊形的切換按鈕 */
+.menu-toggle {
+    background: var(--color1); 
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-family: inherit;
+    font-size: 15px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.05);
+}
+
+/* 修改原本的 .floating-menu */
+.floating-menu {
+    display: none; /* 預設隱藏 */
+    background: rgba(255, 255, 255, 0.98);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--color1);
+    min-width: 140px;
+    margin-bottom: 15px; /* 讓它出現在按鈕上方/下方時有間距 */
+}
+
+/* 當外層有 .show-menu 時顯示選單 */
+.floating-wrapper.show-menu .floating-menu {
+    display: block;
+    animation: slideUp 1s ease-out forwards;
+}
+
+/* 簡單的動畫效果 */
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.era-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.era-links li {
+    margin: 12px 0;
+}
+
+.era-links a {
+    text-decoration: none;
+    color: #666;
+    font-size: 15px;
+    transition: 0.3s;
+    display: block;
+}
+
+.era-links a:hover, .era-links a.active {
+    color: var(--color1);
+    font-weight: 600;
+    transform: translateX(5px); /* 點選或滑過時微幅右移 */
+}
+
+/* 手機版適應 */
+@media (max-width: 768px) {
+    .floating-menu {
+        right: 10px;
+        padding: 10px 15px;
+    }
+    .era-links a { font-size: 13px; }
+}
+/*zone navigation*/
+.exhibit-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 50px auto;
+    padding: 30px 0;
+    border-top: 1px solid #eee;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    gap: 15px;
+}
+
+/* 文字排版 */
+.nav-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-text span {
+    font-size: 0.8rem;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+.nav-text p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* 圖示大小 */
+.nav-btn i {
+    font-size: 2rem;
+    color: var(--color1); /* 使用你的主題紅 */
+    transition: transform 0.3s ease;
+}
+
+/* --- Hover 動態效果 --- */
+
+/* 左邊按鈕移入時箭頭往左跑 */
+.nav-btn.prev:hover i {
+    transform: translateX(-8px);
+}
+
+/* 右邊按鈕移入時箭頭往右跑 */
+.nav-btn.next:hover i {
+    transform: translateX(8px);
+    text-align: right;
+}
+
+.nav-btn.next .nav-text {
+    text-align: right;
+}
+
+/* 中間的回到目錄按鈕 */
+.nav-home {
+    color: #ccc;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.nav-home:hover {
+    color: var(--color1);
+}
+
+/* 手機版適應：隱藏小字標題，只留 NEXT/PREV */
+@media (max-width: 600px) {
+    .nav-text p {
+        display: none;
+    }
+}
+
+/* -----------------------Zone Navigation Style----------------------- */
+/* ----------------------- Contact Page Style ----------------------- */
+/* 表單容器 */
+.contact-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* 讓 form 內部的元素垂直排列 */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 標籤樣式 (姓名、Email等) */
+.contact-form label {
+    width: 100%;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+/* 輸入框與文字區域通用樣式 */
+.contact-form input, 
+.contact-form textarea {
+    padding: 12px 15px;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit; /* 繼承你設定的 Kiwi Maru 字體 */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+/* 點擊輸入框時的發光效果 */
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color1, --color2); /* 使用你的主題紅 */
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(192, 0, 0, 0.1);
+}
+
+/* 送出按鈕 */
+.contact-form button {
+    width: 20%;
+    background-color: var(--color1, --color2);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 50px; /* 圓角膠囊形，更有設計感 */
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.contact-form button:hover {
+    background-color: var(--color3); /* 深一點的紅 */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(160, 0, 0, 0.2);
+}
+
+.contact-form button:active {
+    transform: translateY(0);
+}
+/* ----------------------- Contact Page Style ----------------------- */
+/* --- 主題切換器樣式 --- */
+.theme-switcher {
+    position: fixed;
+    left: 20px;
+    bottom: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-left: 5px solid var(--color1);
+    transition: border-color 0.3s ease;
+}
+
+.theme-switcher p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #333;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+}
+
+.theme-switcher .color-options {
+    display: flex;
+    gap: 12px;
+}
+
+.color-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.color-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
