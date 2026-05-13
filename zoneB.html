@@ -25,8 +25,91 @@
         }
 
     </script>
+    .floating-wrapper {
+    position: fixed;
+    right: 30px; /* 距離右側固定 30px */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.menu-toggle {
+    width: 55px;
+    height: 55px;
+    background-color: var(--color1, #6C0820);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-menu {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border-left: 6px solid var(--color1, #6C0820);
+    min-width: 180px;
+    display: none; /* 預設隱藏 */
+    animation: slideIn 0.3s ease-out;
+}
+
+.show-menu .floating-menu { display: block; }
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.current-area-hint {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+#active-era-text {
+    display: block;
+    color: var(--color1, #6C0820);
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 2px;
+}
+
+.era-links { list-style: none; padding: 0; margin: 0; text-align: left; }
+.era-links li { margin: 12px 0; }
+.era-links a { text-decoration: none; color: #444; font-size: 15px; transition: 0.3s; display: block; }
+.era-links a.active { color: var(--color1, #6C0820) !important; font-weight: 700; transform: translateX(8px); }
+
+/* 平滑滾動 */
+html { scroll-behavior: smooth; }
     </head>
     <body class="kiwi-maru-regular">
+    <div id="floating-wrapper" class="floating-wrapper">
+    <button id="menu-toggle" class="menu-toggle"><i class="ri-history-line"></i></button>
+    <div id="floating-ui" class="floating-menu">
+        <div class="current-area-hint">目前位置：<span id="active-era-text">導覽開始</span></div>
+        <ul class="era-links">
+            <li><a href="#era-early-edo" class="nav-item">江戶初期</a></li>
+            <li><a href="#era-transition" class="nav-item">初期到中期</a></li>
+            <li><a href="#era-mid-edo" class="nav-item">江戶中期</a></li>
+            <li><a href="#era-late-edo" class="nav-item">江戶末期</a></li>
+            <li><a href="#era-accessories" class="nav-item">搭配配件</a></li>
+        </ul>
+    </div>
+</div>
         <div class="banner hi-melody-regular">
             <div class="hamburger">
                 <i class="ri-menu-line"></i>
@@ -72,7 +155,7 @@
                     <div class="exhibit-description">
                         <p class="img-desc">圖案花紋：白綸子地大菊
                                         <br>典藏者：東京國立博物館</p>
-                                        <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
+                                        <div class="color-btn" style="background-color: #c78a45;" onclick="changeThemeColor('#c78a45')"></div>
                         <p>這是一件肩部有大朵菊花圖案的振袖。振袖是一種未婚女性穿著的長袖和服。這件振袖在袖子自上往下約三分之二處設計了橫向的花葉圖案。以此為界，下方三分之一部分接續了另外一種面料。或許這原本並非一件振袖，只是經過重新加工以便未婚女性穿著吧。肩部的的菊花交替採用了刺繡和紮染工藝來表現。黑底部分有紅白小花圖案以及放射狀圖案的刺繡。這種圖案表示落葉松的松葉。呈放射狀發散的松葉中間的三個圓形或許是花蕊吧。 像這種右半身呈弧形圖案的靈動設計尤其是在寬文時期的市井女性之間頗為流行，被稱為「寬文小袖」。這一時期，城鎮居民有著很強的經濟實力，流行服飾中開始出現城鎮居民偏好的影子，取代了此前一直引領潮流的武家文化。最終誕生了這種大膽的設計。江戶時代初期的時尚設計雜誌《禦雛形》中也可見到的款式。</p>
                     </div>
                 </div>
@@ -210,6 +293,53 @@
                 <span><a class="gobackbutton" href="info.html">最新消息</a></span>
                 <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
         </div>
+        <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const wrapper = document.getElementById('floating-wrapper');
+        const toggleBtn = document.getElementById('menu-toggle');
+        const navItems = document.querySelectorAll('.nav-item');
+        const activeText = document.getElementById('active-era-text');
+
+        // 切換選單顯示
+        toggleBtn.addEventListener('click', (e) => { 
+            e.stopPropagation(); 
+            wrapper.classList.toggle('show-menu'); 
+        });
+
+        // 點擊空白處關閉選單
+        document.addEventListener('click', (e) => { 
+            if (!wrapper.contains(e.target)) wrapper.classList.remove('show-menu'); 
+        });
+
+        // 滾動追蹤 (Scroll Spy)
+        function scrollSpy() {
+            const sections = document.querySelectorAll('.exhibit');
+            let currentId = ""; 
+            let currentTitle = "導覽開始";
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                // 當區塊頂部距離視窗上方 250px 以內時視為當前區域
+                if (rect.top <= 250) {
+                    currentId = section.getAttribute('id');
+                    const titleNode = section.querySelector('.exhibit-title');
+                    if (titleNode) currentTitle = titleNode.innerText;
+                }
+            });
+
+            if (activeText) activeText.innerText = currentTitle;
+            navItems.forEach(link => {
+                link.classList.remove('active');
+                if (currentId && link.getAttribute('href') === '#' + currentId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', scrollSpy);
+        window.addEventListener('load', scrollSpy);
+    });
+</script>
     </body>
     <script>
         function changeThemeColor(color) {
