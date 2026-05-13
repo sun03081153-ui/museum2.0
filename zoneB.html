@@ -13,26 +13,68 @@
     <title>江戶時期未婚女性之服飾 - 衣為心聲</title>
     
     <style>
-        /* --- 統一懸浮窗樣式 (與 A 一致) --- */
-        .floating-wrapper { position: fixed; right: 25px; top: 50%; transform: translateY(-50%); z-index: 999999; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
-        .menu-toggle { width: 50px; height: 50px; background-color: var(--color1, #6C0820); color: white; border: none; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: flex; justify-content: center; align-items: center; font-size: 24px; transition: 0.3s; }
-        .floating-menu { background: #ffffff; padding: 20px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); border-left: 6px solid var(--color1, #6C0820); min-width: 180px; display: none; animation: slideIn 0.3s ease-out; }
+        /* --- 懸浮窗統一樣式 (位置完全同步) --- */
+        .floating-wrapper {
+            position: fixed;
+            right: 30px; /* 與 Zone A 保持一致 */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        .menu-toggle {
+            width: 55px;
+            height: 55px;
+            background-color: var(--color1, #6C0820);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex; justify-content: center; align-items: center;
+            font-size: 26px; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .floating-menu {
+            background: #ffffff; padding: 20px; border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-left: 6px solid var(--color1, #6C0820);
+            min-width: 180px; display: none; animation: slideIn 0.3s ease-out;
+        }
+
         .show-menu .floating-menu { display: block; }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
-        .current-area-hint { font-size: 13px; color: #888; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #eee; text-align: left; }
-        #active-era-text { display: block; color: var(--color1, #6C0820); font-weight: 600; font-size: 15px; margin-top: 2px; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .current-area-hint {
+            font-size: 13px; color: #888; margin-bottom: 12px;
+            padding-bottom: 8px; border-bottom: 1px solid #eee; text-align: left;
+        }
+
+        #active-era-text {
+            display: block; color: var(--color1, #6C0820);
+            font-weight: 600; font-size: 15px; margin-top: 2px;
+        }
+
         .era-links { list-style: none; padding: 0; margin: 0; text-align: left; }
         .era-links li { margin: 12px 0; }
-        .era-links a { text-decoration: none; color: #444; font-size: 15px; transition: 0.3s; }
+        .era-links a { text-decoration: none; color: #444; font-size: 15px; transition: 0.3s; display: block; }
         .era-links a.active { color: var(--color1, #6C0820) !important; font-weight: 700; transform: translateX(8px); }
 
-        /* --- 圖片與色彩按鈕樣式 --- */
+        /* --- 圖片與版面控制 --- */
         .exhibit-img { width: 45%; max-width: 400px; flex-shrink: 0; }
         .exhibit-img img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         .exhibit-item { display: flex; flex-direction: row; align-items: flex-start; justify-content: center; gap: 30px; max-width: 85%; margin: 0 auto 50px auto; }
         .color-btn { width: 25px; height: 25px; border-radius: 50%; cursor: pointer; border: 2px solid white; box-shadow: 0 0 3px rgba(0,0,0,0.3); margin: 10px 0; display: inline-block; }
 
-        @media (max-width: 768px) { .exhibit-item { flex-direction: column; align-items: center; } .exhibit-img { width: 90%; } }
+        @media (max-width: 768px) { .exhibit-item { flex-direction: column; align-items: center; } .exhibit-img { width: 90%; } .floating-wrapper { right: 15px; } }
         html { scroll-behavior: smooth; }
     </style>
     <script>
@@ -67,7 +109,7 @@
     <div class="jhkimono">
         <div class="titles">
             <span class="top-title">江戶時期：階級與時尚</span>
-            <span class="exhibit-subtitle">分析袖長如何反映當時的適婚年齡識別。</span>
+            <span class="exhibit-subtitle">探討色彩、紋樣與袖長如何反映家族背景。</span>
         </div>
 
         <div class="exhibit" id="era-early">
@@ -76,7 +118,7 @@
                 <div class="exhibit-img"><img src="./src/edo/江戶初期-振袖.jpg"></div>
                 <div class="exhibit-description">
                     <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
-                    <p>這是一件肩部有大朵菊花圖案的振袖，反映了寬文時期的靈動設計。</p>
+                    <p>這是一件肩部有大朵菊花圖案的振袖。</p>
                 </div>
             </div>
         </div>
