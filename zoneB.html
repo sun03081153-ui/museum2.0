@@ -182,3 +182,65 @@
                 </div>
                 <div class="exhibit-description">
                     <p class="img-desc">圖案花紋：不受身份限制的梳子和簪子</p>
+                    <div class="color-btn" style="background-color: #ac3b39;" onclick="changeThemeColor('#ac3b39')"></div>
+                    <p>江戶時代是庶民在經濟和社會地位上逐漸增強，並且町人文化迅速繁榮的時期。在這個時代，曾經只能穿著粗糙材質和有限色彩的庶民們，也開始為了享受時尚而巧妙地加以設計創新。其中，女性特別喜愛的配飾包括不受身份限制的梳子和簪子等小物件。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="exhibit-navigation">
+        <a href="zoneA.html" class="nav-btn prev">
+            <i class="ri-arrow-left-s-line"></i>
+            <div class="nav-text"><span>PREV</span><p>和服發展時間線</p></div>
+        </a>
+        <a href="content.html" class="nav-home"><i class="ri-grid-fill"></i></a>
+        <a href="zoneC.html" class="nav-btn next">
+            <div class="nav-text"><span>NEXT</span><p>現代發展與儀式性</p></div>
+            <i class="ri-arrow-right-s-line"></i>
+        </a>
+    </div>
+
+    <div class="goback">  
+        <span><a class="gobackbutton" href="index.html">首頁</a></span>
+        <span><a class="gobackbutton" href="about.html">關於我們</a></span>
+        <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
+        <span><a class="gobackbutton" href="info.html">最新消息</a></span>
+        <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('floating-wrapper');
+            const toggleBtn = document.getElementById('menu-toggle');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            // 1. 點擊按鈕切換選單顯示/隱藏
+            toggleBtn.addEventListener('click', function(e) { 
+                e.stopPropagation(); 
+                wrapper.classList.toggle('show-menu'); 
+            });
+
+            // 2. 點擊連結後自動關閉選單
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    wrapper.classList.remove('show-menu');
+                });
+            });
+
+            // 3. 點擊頁面其他地方關閉選單
+            document.addEventListener('click', function(e) { 
+                if (!wrapper.contains(e.target)) {
+                    wrapper.classList.remove('show-menu'); 
+                }
+            });
+        });
+
+        // 主題顏色切換
+        function changeThemeColor(color) {
+            document.documentElement.style.setProperty('--color1', color);
+            localStorage.setItem('kimonoThemeColor', color);
+        }
+    </script>
+</body>
+</html>
