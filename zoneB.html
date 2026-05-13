@@ -21,65 +21,28 @@
     </script>
 
     <style>
-        /* 懸浮選單系統 */
-        .floating-wrapper {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 999999;
-            display: flex;
+        .exhibit-description {
+            display: flex !important;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 15px;
-        }
-
-        .menu-toggle {
-            width: 55px;
-            height: 55px;
-            background-color: var(--color1, #6C0820);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            display: flex;
+            align-items: flex-start !important; /* 強制所有元素靠左 */
+            text-align: left !important;
             justify-content: center;
-            align-items: center;
-            font-size: 26px;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        .floating-menu {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            border-left: 6px solid var(--color1, #6C0820);
-            min-width: 180px;
-            display: none;
-            animation: slideIn 0.3s ease-out;
+        .exhibit-description p {
+            text-align: justify !important; /* 長文章左右對齊較美觀 */
+            width: 100%;
         }
-
-        .show-menu .floating-menu { display: block; }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
+        .color-btn {
+            margin: 10px 0 15px 0 !important; /* 確保顏色按鈕上下有間距，不會黏在一起 */
         }
-
-        .era-links { list-style: none; padding: 0; margin: 0; text-align: left; }
-        .era-links li { margin: 12px 0; }
-        .era-links a { text-decoration: none; color: #444; font-size: 15px; transition: 0.3s; display: block; }
-        .era-links a:hover { color: var(--color1, #6C0820); padding-left: 5px; }
-
-        html { scroll-behavior: smooth; }
     </style>
 </head>
 
 <body class="kiwi-maru-regular">
     <div id="floating-wrapper" class="floating-wrapper">
-        <button id="menu-toggle" class="menu-toggle"><i class="ri-history-line"></i></button>
+        <button id="menu-toggle" class="menu-toggle">
+            <i class="ri-history-line"></i>
+        </button>
         <div id="floating-ui" class="floating-menu">
             <ul class="era-links">
                 <li><a href="#era-early-edo" class="nav-item">江戶初期</a></li>
@@ -126,7 +89,7 @@
                 <div class="exhibit-description">
                     <p class="img-desc">圖案花紋：白綸子地大菊<br>典藏者：東京國立博物館</p>
                     <div class="color-btn" style="background-color: #c78a45;" onclick="changeThemeColor('#c78a45')"></div>
-                    <p>這是一件肩部有大朵菊花圖案的振袖。振袖是一種未婚女性穿著的長袖和服。這件振袖在袖子自上往下約三分之二處設計了橫向的花葉圖案。肩部的菊花交替採用了刺繡和紮染工藝來表現。</p>
+                    <p>這是一件肩部有大朵菊花圖案的振袖。振袖是一種未婚女性穿著的長袖和服。這件振袖在袖子自上往下約三分之二處設計了橫向的花葉圖案。以此為界，下方三分之一部分接續了另外一種面料。或許這原本並非一件振袖，只是經過重新加工以便未婚女性穿著吧。肩部的的菊花交替採用了刺繡和紮染工藝來表現。黑底部分有紅白小花圖案以及放射狀圖案的刺繡。這種圖案表示落葉松的松葉。呈放射狀發散的松葉中間的三個圓形或許是花蕊吧。 像這種右半身呈弧形圖案的靈動設計尤其是在寬文時期的市井女性之間頗為流行，被稱為「寬文小袖」。這一時期，城鎮居民有著很強的經濟實力，流行服飾中開始出現城鎮居民偏好的影子，取代了此前一直引領潮流的武家文化。最終誕生了這種大膽的設計。江戶時代初期的時尚設計雜誌《禦雛形》中也可見到的款式。</p>
                 </div>
             </div>
             <div class="exhibit-item">
@@ -136,7 +99,7 @@
                 <div class="exhibit-description">
                     <p class="img-desc">圖案花紋：黑紅綸子地橘熨斗<br>典藏者：東京國立博物館</p>
                     <div class="color-btn" style="background-color: #5a4b38;" onclick="changeThemeColor('#5a4b38')"></div>
-                    <p>小袖是現代和服的原型。這些心形的圖案其實是一些橘子。橘子樹被認為是青春永恆的象徵。大大的曲線形緞帶狀圖案被稱為「熨斗」紋。</p>
+                    <p>小袖是現代和服的原型。這一名稱最初是和服袖口開口較窄的意思，這件和服應該是城市工商業階層的女性參加正式場合時所穿的禮服。這些心形的圖案其實是一些橘子。橘子樹即便在寒冬也是枝葉繁茂、鬱鬱蔥蔥，因此被認為是青春永恆的象徵。小袖上那些大大的曲線形緞帶狀的圖案在日本被稱為「熨斗」紋。「熨斗」指禮品袋上的禮簽。在古代，人們在贈送禮品時，通常會附帶一條薄薄的幹鮑魚條，用來作為長壽的象徵。之後經抽象化後被設計成了現在的「熨斗」紋。這兩者都是非常吉祥的圖案。 和服的底色看上去略帶茶色，但實際上卻是將紅色面料染成黑色後製成的。這種顏色被稱為「黑紅色」，是江戶時代初期的流行色。仔細觀察還會發現，橘與「熨斗」圖案都由很多小小的圓形顆粒組成的。每一個圓形顆粒都是以線將面料一圈圈纏繞打結後染色製成，這種工藝叫做「鹿子紮染」。因為這些無數個小斑點看上去好似小鹿毛皮上的斑點，因此得名。每一粒圓形顆粒均由手工製成，可想裁知這是一項十分浩大的工程。「鹿子紮染」與金線和縫箔一起，並稱三大奢侈工藝，在當時的社會上被禁止使用。但您眼前這件小袖卻大面積地使用「鹿子紮染」工藝，實在是奢華至極。</p>
                 </div>
             </div>
         </div>
@@ -150,8 +113,9 @@
                     <img src="./src/edo/江戶初中過度-小袖.jpg" alt="Exhibit B3">
                 </div>
                 <div class="exhibit-description">
+                    <p class="img-desc">圖案花紋：白色緞紋提花地鼓與藤花圖案</p>
                     <div class="color-btn" style="background-color: #bcbcb7;" onclick="changeThemeColor('#bcbcb7')"></div>
-                    <p>白色緞紋提花地鼓與藤花圖案，以鹿子絞染表現鼓皮、岩石等。應是從寬文期向偏好優雅設計的元祿期過渡時期的作品。</p>
+                    <p>白色緞紋提花地鼓與藤花圖案， 以鹿子絞染表現鼓皮、岩石等，其周圍則以金線和絲線的刺繡表現藤花下垂的圖案。 應是從流行自由大胆設計的寬文期（1661-1673）向偏好優雅設計的元祿期（1688-1704）過渡時期的作品。</p>
                 </div>
             </div>
         </div>
@@ -177,7 +141,7 @@
                 <div class="exhibit-description">
                     <p class="img-desc">圖案花紋：縐綢地菊花芒草籬笆流水<br>典藏者：東京國立博物館</p>
                     <div class="color-btn" style="background-color: #6c8939;" onclick="changeThemeColor('#6c8939')"></div>
-                    <p>以友禪染技法與辮子表現了「光琳水」流水圖案與盡顯琳派風格的秋草圖案。</p>
+                    <p>江戶時代中期的小袖和服。上方的背與兩袖上，飾有三處由「抱藤紋」與「禮簽束帶紋」組合而成的刺繡「伊達紋」。腰部下方的圖案傾向於正德年間的和服裝設計書籍圖案。以友禪染技法與辮子表現了「光琳水」流水圖案與盡顯琳派風格的秋草圖案。五處紋路的辮子「伊達紋」是由「抱藤紋」與「禮簽束帶紋」組合而成的。</p>
                 </div>
             </div>
         </div>
@@ -193,7 +157,7 @@
                 <div class="exhibit-description">
                     <p class="img-desc">圖案花紋：縹色羽二重地採茶風景<br>典藏者：東京國立博物館</p>
                     <div class="color-btn" style="background-color: #516387;" onclick="changeThemeColor('#516387')"></div>
-                    <p>江戶時代後期，城市女性間開始將藍、灰、茶色等樸素的顏色作為高雅、瀟灑的色調。</p>
+                    <p>江戶時代後期，城市女性間開始將藍、灰、茶色等樸素的顏色作為高雅、瀟灑的色調加以喜愛。</p>
                 </div>
             </div>
             <div class="exhibit-item">
@@ -217,65 +181,4 @@
                     <img src="./src/edo/配件.jpg" alt="Exhibit B8">
                 </div>
                 <div class="exhibit-description">
-                    <div class="color-btn" style="background-color: #ac3b39;" onclick="changeThemeColor('#ac3b39')"></div>
-                    <p>女性特別喜愛的配飾包括不受身份限制的梳子和簪子等小物件，展現了町人文化的繁榮。</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="exhibit-navigation">
-        <a href="zoneA.html" class="nav-btn prev">
-            <i class="ri-arrow-left-s-line"></i>
-            <div class="nav-text"><span>PREV</span><p>和服發展時間線</p></div>
-        </a>
-        <a href="content.html" class="nav-home"><i class="ri-grid-fill"></i></a>
-        <a href="zoneC.html" class="nav-btn next">
-            <div class="nav-text"><span>NEXT</span><p>現代發展與儀式性</p></div>
-            <i class="ri-arrow-right-s-line"></i>
-        </a>
-    </div>
-
-    <div class="goback">  
-        <span><a class="gobackbutton" href="index.html">首頁</a></span>
-        <span><a class="gobackbutton" href="about.html">關於我們</a></span>
-        <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
-        <span><a class="gobackbutton" href="info.html">最新消息</a></span>
-        <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const wrapper = document.getElementById('floating-wrapper');
-            const toggleBtn = document.getElementById('menu-toggle');
-            const navItems = document.querySelectorAll('.nav-item');
-
-            // 1. 點擊按鈕切換選單顯示/隱藏
-            toggleBtn.addEventListener('click', function(e) { 
-                e.stopPropagation(); 
-                wrapper.classList.toggle('show-menu'); 
-            });
-
-            // 2. 點擊連結後自動關閉選單
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    wrapper.classList.remove('show-menu');
-                });
-            });
-
-            // 3. 點擊頁面其他地方關閉選單
-            document.addEventListener('click', function(e) { 
-                if (!wrapper.contains(e.target)) {
-                    wrapper.classList.remove('show-menu'); 
-                }
-            });
-        });
-
-        // 主題顏色切換
-        function changeThemeColor(color) {
-            document.documentElement.style.setProperty('--color1', color);
-            localStorage.setItem('kimonoThemeColor', color);
-        }
-    </script>
-</body>
-</html>
+                    <p class="img-desc">圖案花紋：不受身份限制的梳子和簪子</p>
