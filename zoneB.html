@@ -1,121 +1,162 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="adopt.css">
-        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>江戶時期未婚女性之服飾</title>
-        
-        <style>
-            /* 漂浮 UI 樣式 (與 Zone A 相同) */
-          .floating-menu {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #ffffff; /* 確保背景是不透明的純白 */
-    padding: 20px;
-    border-radius: 15px;
-    /* 增加更重的陰影，確保它能從背景跳出來 */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
-    z-index: 999999; /* 提高到最高層級 */
-    border-left: 6px solid var(--color1, #6C0820); /* 增加預設深紅色防止變數失效 */
-    width: auto;
-    min-width: 150px;
-    display: block !important; /* 強制顯示 */
-}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="adopt.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>江戶時期未婚女性之服飾</title>
 
-.era-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+    <style>
+        /* --- 懸浮窗縮放結構 CSS --- */
+        .floating-wrapper {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
 
-.era-links li {
-    margin: 15px 0;
-}
+        /* 切換按鈕樣式 */
+        .menu-toggle {
+            width: 50px;
+            height: 50px;
+            background-color: var(--color1, #6C0820);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            transition: 0.3s;
+        }
 
-.era-links a {
-    text-decoration: none;
-    color: #444; /* 字體顏色加深 */
-    font-size: 16px;
-    transition: 0.3s;
-    display: block;
-    font-weight: 500;
-}
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
 
-/* 啟動狀態的顏色切換 */
-.era-links a.active {
-    color: var(--color1, #6C0820) !important;
-    font-weight: 700;
-    transform: translateX(8px);
-}
-            /* 限制圖片不滿版 (依照您之前的要求) */
-            .exhibit-img {
-                width: 45%;
-                max-width: 400px;
-                flex-shrink: 0;
-            }
+        /* 選單內容 (預設隱藏) */
+        .floating-menu {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-left: 6px solid var(--color1, #6C0820);
+            width: auto;
+            min-width: 150px;
+            display: none; /* 初始隱藏 */
+            animation: fadeInRight 0.3s ease-out;
+        }
 
-            .exhibit-img img {
-                width: 100%;
-                height: auto;
-                max-height: 450px;
-                object-fit: cover;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            }
+        /* 當含有 show-menu 類別時顯示 */
+        .show-menu .floating-menu {
+            display: block;
+        }
 
-            .exhibit-item {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                justify-content: center;
-                gap: 30px;
-                max-width: 85%;
-                margin: 0 auto 40px auto;
-            }
+        /* 展開動畫 */
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
 
-            /* 手機版適應 */
-            @media (max-width: 768px) {
-                .exhibit-item { flex-direction: column; align-items: center; }
-                .exhibit-img { width: 90%; max-width: none; }
-                .floating-menu { right: 10px; min-width: 110px; padding: 10px; }
-                .era-links a { font-size: 13px; }
-            }
+        .era-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-            html { scroll-behavior: smooth; }
+        .era-links li {
+            margin: 15px 0;
+        }
 
-            /* 主題顏色按鈕樣式 */
-            .color-btn {
-                width: 25px;
-                height: 25px;
-                border-radius: 50%;
-                cursor: pointer;
-                border: 2px solid white;
-                box-shadow: 0 0 3px rgba(0,0,0,0.3);
-                margin: 10px 0;
-                display: inline-block;
-            }
-        </style>
+        .era-links a {
+            text-decoration: none;
+            color: #444;
+            font-size: 16px;
+            transition: 0.3s;
+            display: block;
+            font-weight: 500;
+            white-space: nowrap;
+        }
 
-        <script>
-            // 讀取存儲的主題色
-            const savedColor = localStorage.getItem('kimonoThemeColor');
-            if (savedColor) {
-                document.documentElement.style.setProperty('--color1', savedColor);
-            }
-        </script>
-    </head>
-    <body class="kiwi-maru-regular">
-        
+        .era-links a.active {
+            color: var(--color1, #6C0820) !important;
+            font-weight: 700;
+            transform: translateX(8px);
+        }
+
+        /* 限制圖片寬度 (不滿版) */
+        .exhibit-img {
+            width: 45%;
+            max-width: 400px;
+            flex-shrink: 0;
+        }
+
+        .exhibit-img img {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .exhibit-item {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 30px;
+            max-width: 85%;
+            margin: 0 auto 40px auto;
+        }
+
+        @media (max-width: 768px) {
+            .exhibit-item { flex-direction: column; align-items: center; }
+            .exhibit-img { width: 90%; max-width: none; }
+            .floating-wrapper { right: 10px; }
+        }
+
+        html { scroll-behavior: smooth; }
+
+        .color-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 3px rgba(0,0,0,0.3);
+            margin: 10px 0;
+            display: inline-block;
+        }
+    </style>
+
+    <script>
+        const savedColor = localStorage.getItem('kimonoThemeColor');
+        if (savedColor) {
+            document.documentElement.style.setProperty('--color1', savedColor);
+        }
+    </script>
+</head>
+<body class="kiwi-maru-regular">
+
+    <div id="floating-wrapper" class="floating-wrapper">
+        <button id="menu-toggle" class="menu-toggle">
+            <i class="ri-history-line"></i>
+        </button>
         <div id="floating-ui" class="floating-menu">
             <ul class="era-links">
                 <li><a href="#era-early" class="nav-item">江戶初期</a></li>
@@ -125,213 +166,36 @@
                 <li><a href="#era-accessories" class="nav-item">配件飾品</a></li>
             </ul>
         </div>
+    </div>
 
-        <div class="banner hi-melody-regular">
-            <div class="hamburger">
-                <i class="ri-menu-line"></i>
-            </div>
-            <nav class="navbar">
-                <a href="index.html">首頁</a>
-                <a href="about.html">關於我們</a>
-                <a href="knowledge.html">策展理念</a>
-                <a href="info.html">最新消息</a>
-                <a class="active" href="content.html">進入展覽</a>
-            </nav>
-            <h1>衣為心聲</h1>
-            <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">    
-                <path d="M0,60 C 240,90 480,30 720,60 C 960,90 1200,30 1440,60 L1440,120 L0,120 Z" fill="var(--color1)" transform="translate(0, 5)" />
-                <path d="M0,60 C 240,90 480,30 720,60 C 960,90 1200,30 1440,60 L1440,120 L0,120 Z" fill="whitesmoke" transform="translate(0, 40)" />
-            </svg>
+    <div class="banner hi-melody-regular">
+        <div class="hamburger">
+            <i class="ri-menu-line"></i>
+        </div>
+        <nav class="navbar">
+            <a href="index.html">首頁</a>
+            <a href="about.html">關於我們</a>
+            <a href="knowledge.html">策展理念</a>
+            <a href="info.html">最新消息</a>
+            <a class="active" href="content.html">進入展覽</a>
+        </nav>
+        <h1>衣為心聲</h1>
+        <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">    
+            <path d="M0,60 C 240,90 480,30 720,60 C 960,90 1200,30 1440,60 L1440,120 L0,120 Z" fill="var(--color1)" transform="translate(0, 5)" />
+            <path d="M0,60 C 240,90 480,30 720,60 C 960,90 1200,30 1440,60 L1440,120 L0,120 Z" fill="whitesmoke" transform="translate(0, 40)" />
+        </svg>
+    </div>
+
+    <div class="jhkimono">
+        <div class="titles">
+            <span class="top-title">江戶時期：階級與時尚</span>
+            <span class="exhibit-subtitle">探討江戶時代的服飾特徵，分析其色彩、紋樣與袖長如何反映當時的適婚年齡識別與家族背景。</span>
         </div>
 
-        <div class="jhkimono">
-            <div class="titles">
-                <span class="top-title">江戶時期：階級與時尚</span>
-                <span class="exhibit-subtitle">探討江戶時代的服飾特徵，分析其色彩、紋樣與袖長如何反映當時的適婚年齡識別與家族背景。</span>
-            </div>
-
-            <div class="exhibit" id="era-early">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">江戶初期</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/edo/江戶初期-振袖.jpg" alt="江戶初期-振袖">
-                    </div>
-                    <div class="exhibit-description">
-                        <p class="img-desc">圖案花紋：白綸子地大菊 <br>典藏者：東京國立博物館</p>
-                        <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
-                        <p>這是一件肩部有大朵菊花圖案的振袖。振袖是一種未婚女性穿著的長袖和服。這種右半身呈弧形圖案的靈動設計尤其是在寬文時期的市井女性之間頗為流行，被稱為「寬文小袖」。</p>
-                    </div>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/edo/江戶初期-小袖.jpg" alt="江戶初期-小袖">
-                    </div>
-                    <div class="exhibit-description">
-                        <p class="img-desc">圖案花紋：黑紅綸子地橘熨斗 <br>典藏者：東京國立博物館</p>
-                        <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
-                        <p>小袖是現代和服的原型。橘子樹被認為是青春永恆的象徵，「熨斗」紋則是吉祥的圖案。這種顏色被稱為「黑紅色」，是江戶時代初期的流行色。</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="exhibit" id="era-transition">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">初期到中期的過度代表</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/edo/江戶初中過度-小袖.jpg" alt="初中過度小袖">
-                    </div>
-                    <div class="exhibit-description">
-                        <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
-                        <p>白色緞紋提花地鼓與藤花圖案，以鹿子絞染表現。應是從流行自由大膽設計的寬文期（1661-1673）向偏好優雅設計的元祿期（1688-1704）過渡時期的作品。</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="exhibit" id="era-middle">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">江戶中期</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/edo/江戶中期-小袖1.jpg" alt="江戶中期小袖1">
-                    </div>
-                    <div class="exhibit-description">
-                        <p class="img-desc">圖案花紋：縹色縮緬地岩波梅 <br>典藏者：東京國立博物館</p>
-                        <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
-                        <p>深色的底子上，用防染留白的技法表現出飄逸瀟灑的白色紋樣，這種裝飾法流行於江戶時代中期。</p>
-                    </div>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/edo/江戶中期-小袖2.jpg" alt="江戶中期小袖2">
-                    </div>
-                    <div class="exhibit-description">
-                        <p class="img-desc">圖案花紋：縐綢地菊花芒草籬笆流水 <br>典藏者：東京國立博物館</p>
-                        <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
-                        <p>以友禪染技法與辮子表現了「光琳水」流水圖案與盡顯琳派風格的秋草圖案。</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="exhibit" id="era-late">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">江戶末期</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/edo/江戶末期-振袖1.jpg" alt="江戶末期振袖1">
-                    </div>
-                    <div class="exhibit-description">
-                        <p class="img-desc">圖案花紋：縹色羽二重地採茶風景 <br>典藏者：東京國立博物館</p>
-                        <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
-                        <p>江戶時代後期，城市女性間開始將藍、灰、茶色等樸素的顏色作為高雅、瀟灑的色調加以喜愛。</p>
-                    </div>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/edo/江戶末期-振袖2.jpg" alt="江戶末期振袖2">
-                    </div>
-                    <div class="exhibit-description">
-                        <p class="img-desc">圖案花紋：紅綸子地梅樹圖案 <br>典藏者：東京國立博物館</p>
-                        <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
-                        <p>如這件作品般袖長一米多的振袖和服，流行於江戶時代後期。</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="exhibit" id="era-accessories">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">其他:搭配和服之配件</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/edo/配件.jpg" alt="配件">
-                    </div>
-                    <div class="exhibit-description">
-                        <div class="color-btn" style="background-color: #6c085f;" onclick="changeThemeColor('#6c085f')"></div>
-                        <p>江戶時代町人文化迅速繁榮，女性特別喜愛的配飾包括不受身份限制的梳子和簪子等小物件。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="exhibit-navigation">
-            <a href="zoneA.html" class="nav-btn prev">
-                <i class="ri-arrow-left-s-line"></i>
-                <div class="nav-text">
-                    <span>PREV</span>
-                    <p>和服發展時間線</p>
-                </div>
-            </a>
-            <a href="content.html" class="nav-home">
-                <i class="ri-grid-fill"></i>
-            </a>
-            <a href="zoneC.html" class="nav-btn next">
-                <div class="nav-text">
-                    <span>NEXT</span>
-                    <p>平民女性服飾</p>
-                </div>
-                <i class="ri-arrow-right-s-line"></i>
-            </a>
-        </div>
-
-        <div class="goback">  
-                <span><a class="gobackbutton" href="index.html">首頁</a></span>
-                <span><a class="gobackbutton" href="about.html">關於我們</a></span>
-                <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
-                <span><a class="gobackbutton" href="info.html">最新消息</a></span>
-                <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
-        </div>
-
-        <script>
-            // 主題顏色切換
-            function changeThemeColor(color) {
-                document.documentElement.style.setProperty('--color1', color);
-                localStorage.setItem('kimonoThemeColor', color);
-            }
-
-            // 滾動偵測與導覽列啟動狀態
-            function updateNav() {
-                const sections = document.querySelectorAll('.exhibit');
-                const navLinks = document.querySelectorAll('.nav-item');
-                let currentId = "";
-
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top <= 250) {
-                        currentId = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + currentId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', updateNav);
-            window.addEventListener('load', updateNav);
-
-            // 平滑滾動與偏移量調整
-            document.querySelectorAll('.nav-item').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        </script>
-    </body>
-</html>
+        <div class="exhibit" id="era-early">
+            <div class="exhibit-desc"><span class="exhibit-title">江戶初期</span></div>
+            <div class="exhibit-item">
+                <div class="exhibit-img"><img src="./src/edo/江戶初期-振袖.jpg" alt="江戶初期-振袖"></div>
+                <div class="exhibit-description">
+                    <p class="img-desc">圖案花紋：白綸子地大菊 <br>典藏者：東京國立博物館</p>
+                    <div class="color-btn" style="background-color: #6c
