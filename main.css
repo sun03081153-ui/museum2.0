@@ -1,344 +1,82 @@
-.knowledge{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-}
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="src\icomoon\style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="knowledge.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>衣為心聲-策展理念</title>
+        <script src="theme.js"></script>
 
-.knowledge img{
-    width: 10rem;
-    rotate: -4deg;
-}
+    <script>
 
-.knowledge .container{
-    position: relative;
-    width: 50%;
-    display: flex;
-    align-self: center;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+        // 放在 head：在網頁畫出來前先套用顏色，防止閃爍
 
-    background: var(--light_yellow);
-    padding: 2rem 2rem;
-    line-height: 1.6;
+        const savedColor = localStorage.getItem('kimonoThemeColor');
 
-    clip-path: polygon(
-        4% 0%,   12% 2%,  25% 0%,   40% 3%,  60% 0%,  78% 4%,  92% 0%,
-        100% 12%, 
-        97% 28%, 100% 45%, 96% 62%, 100% 78%,
-        94% 100%, 80% 96%, 65% 100%, 48% 97%, 30% 100%, 18% 96%, 6% 100%,
-        0% 85%, 3% 70%, 0% 55%, 4% 35%, 0% 18%
-    );
-}
+        if (savedColor) {
 
-.knowledge .container .content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+            document.documentElement.style.setProperty('--color1', savedColor);
 
-.adopt{
-    background-color: var(--light_yellow);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem 70px;
-}
+        }
 
-.container{
-    width: 70%;
-    position: relative;
-    border-radius: 1rem;
-    overflow: hidden;
-}
-
-.carousel {
-    width: 70%;
-    aspect-ratio: 4/3;
-    background: #FAFAFA;
-    position: relative;
-}
-
-.carousel-cell {
-    margin-right: 1.5rem;
-    counter-increment: gallery-cell;
-    opacity: 0.9;
-}
-
-.carousel-cell img{
-    width: 500px;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: 0.5rem; 
-    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.12) ;
-    -webkit-box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.12) ;
-    -moz-box-shadow: 1px 1px 2px 2px rgba(71, 46, 8, 0.12) ;
-    transform: scale(0.95);
-    opacity: 0.7;
-    transition: 0.8s;
-    position: relative;
-}
-
-.carousel-cell img.is-selected {
-    transform: scale(1.1);
-    border-radius: 0.5rem; 
-    opacity: 1;
-}
-
-.flickity-page-dots{
-    top: 90%;
-}
-
-.flickity-page-dots li.dot{
-    background-color: white;
-}
-
-.flickity-button.flickity-prev-next-button{
-    box-shadow: none;
-    background-color: transparent;
-    width: 2.25rem;
-    height: 2.25rem;
-    z-index: 222;
-    color:white;
-}
-
-.flickity-button.flickity-prev-next-button:hover{
-    background-color: transparent;
-    color:var(--yellow);
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: #fff;
-    padding: 2rem;
-    width: 80%;
-    max-width: 600px;
-    max-height: 80%;
-    border-radius: 10px;
-    animation: fadeIn .2s;
-    overflow-y: scroll;
-    scrollbar-color: gray transparent;
-    scrollbar-width: thin;
-}
-
-.close-btn {
-    float: right;
-    font-size: 1.6rem;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@media(max-width: 1024px){ 
-    .shelter_info .info{
-        display: flex;
-        flex-direction: column;
-        gap:5rem;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-@media (max-width: 768px) {
-    .knowledge img{
-        display: none;
-    }
-    .knowledge .container{
-        width: 70%;
-    }
-
-    .container{
-        width: 100%;
-    }
-    .carousel {
-        width: 100%;
-        aspect-ratio: unset; 
-    }
-
-    .carousel-cell img {
-        width: 100%;                    
-        aspect-ratio: 4 / 3;      
-        transform: scale(1);        
-        opacity: 1;                 
-        border-radius: 0.5rem;
-    }
-
-    .carousel-cell {
-        margin-right: 1rem;
-    }
-
-    .flickity-page-dots{
-        top: 80%;
-    }
-}
-
-.vaccine {
-    padding: 2rem 70px;
-}
-
-.links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color:white;
-}
-
-.vac-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-    width: 150px;
-    height: 180px;
-    margin: 60px 22px;
-    padding:0;
-    text-align: center;
-    border-radius: 30px;
-    /* border: #FEF5E3 5px solid; */
-    background-color: rgba(241, 176, 43, 0.7);
-    text-decoration: none;;
-    color: white;
-    line-height: 1;
-    /* box-shadow: 0 8px 20px rgba(0,0,0,0.2); */
-}
-
-.vac-link:visited {
-    text-decoration: none;
-}
-.vac-link:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-.link-text {
-    margin-top: 20px;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-.nav-icon {
-    margin: 0;
-    padding: 0;
-    transform: scale(0.6);
-}
-
-.main-banner{
-    width: 100vw;
-    height: 150vh;
-    background-image: radial-gradient(circle at center, #18191d00, #000000dc),url("./src/info.jpg");
-    background-position: 50% 35%;
-    background-size: cover;
-    position: relative;
-}
-
-.main-banner h1{
-    margin-top: 150px;
-    font-size: 6.25rem;
-    font-weight: 500;
-    color: white;
-    letter-spacing: 0.5rem;
-}
-
-.main-banner h2{
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: white;
-    letter-spacing: 0.5rem;
-}
-
-.main-banner p{
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: white;
-    letter-spacing: 0.5rem;
-    text-align: center;
-}
-
-.main-title {
-    font-size: 256px;
-    font-weight: 500;
-    color: white;
-}
-
-.description {
-    max-width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2rem;
-    margin-bottom: 0;
-}
-.goback-main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        gap: 3rem;
-        margin: 0;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        background-color: var(--color1);
-}
-.wave-main {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    pointer-events: none;
-    width: 100%;
-    height: 120px;
-}
-
-.start-main {
-    text-decoration: none;
-    padding: 0.8rem 2rem;
-    font-size: var(--fs-h3);
-    color: white;
-    background: none;
-    border: none;
-    cursor: default;
-    box-shadow: none;
-    display: inline-block;          
-    width: auto;
-    margin: 50px auto;
-}
-
-.start-main:hover {
-    color: white;
-    background: none;
-    border: none;
-    cursor: default;
-    box-shadow: none;
-}
-
-.start-main::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: width 0.3s ease;
-}
-
-.start-main:hover::after {
-    width: 100%;
-}
-
+    </script>
+</head>
+<body class="kiwi-maru-regular">
+    <div class="banner hi-melody-regular">
+        <div class="hamburger">
+            <i class="ri-menu-line"></i>
+        </div>
+        <nav class="navbar">
+            <a href="index.html">首頁</a>
+            <a href="about.html">關於我們</a>
+            <a class="active" href="knowledge.html">策展理念</a>
+            <a href="info.html">最新消息</a>
+            <a href="content.html">進入展覽</a>
+        </nav>
+        <h1>策展理念</h1>
+        <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">    
+                <path d="
+                    M0,60 
+                    C 240,90 480,30 720,60 
+                    C 960,90 1200,30 1440,60 
+                    L1440,120 L0,120 Z" 
+                    fill="var(--color1)" 
+                    transform="translate(0, 5)" />
+                <path d="
+                    M0,60 
+                    C 240,90 480,30 720,60 
+                    C 960,90 1200,30 1440,60 
+                    L1440,120 L0,120 Z" 
+                    fill="whitesmoke" 
+                    transform="translate(0, 40)" />
+            </svg>
+    </div>
+            <div class="members">
+            <div class="titles">
+                <span class="title">策展理念</span>
+            </div>  
+    <style>
+        p {
+    padding-left: 15%;  /* 使用百分比，會隨視窗大小縮放 */
+    padding-right: 15%;
+    }   
+    </style>
+    <p>在江戶的街道上，人們開口之前衣著已經替他發聲。從彌生時代只為遮蔽與生存而存在的簡單衣物，到平安時代逐漸承載階級重量的華麗服飾，和服隨著制度與文化的發展，被不斷賦予新的意義。而一切的演變最終在染織與刺繡技術臻於成熟的江戶時代下，和服的美如煙火般絢爛地綻放，展現出極致的視覺華麗。在江戶社會中，服飾成為一種可以被閱讀的語言。袖子的長短、色彩的濃淡與紋樣的繁簡，不僅區分階級，也標示人生階段。未婚女性的振袖象徵尚未被確定的未來，而町人妻收斂而精緻的裝束，則在奢侈禁止令的限制之中，展現出含蓄的品味與經濟實力。正如井原西鶴在好色一代女與日本永代蔵中所描繪的世界，人的處境與外在樣貌始終緊密相連，服飾不只是選擇，而是社會對個體的回應。這樣的觀點，在後世文學中仍被延續與深化。例如張愛玲曾指出：「對於不會說話的人，衣服是一種語言，隨身帶著的袖珍戲劇。」這句話雖出自不同時代與文化背景，卻與江戶社會的服飾現象形成呼應，衣著始終不只是遮蔽身體的存在，而是一種被觀看、被解讀的社會文本。本展覽以江戶時代為核心，回望和服如何從最初遮蔽身體、標示身分的日常衣物，在漫長的制度與文化積累之中，逐漸成為一種可以被閱讀的語言。透過不同階層與身分的服飾對照，我們得以看見人在秩序之中如何被塑形，又如何在細節之處保留微小卻堅定的自我。當目光落在這些衣物之上，所見的不只是衣著，而是一整個時代如何以服飾書寫人的存在，並將無聲的規範化為可被觀看的歷史痕跡。</p>
+    </div>
+</div>
+    <div class="goback">  
+            <span><a class="gobackbutton" href="index.html">首頁</a></span>
+            <span><a class="gobackbutton" href="about.html">關於我們</a></span>
+            <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
+            <span><a class="gobackbutton" href="info.html">最新消息</a></span>
+            <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
+    </div>
+    <script src="./data/knowledges.js"></script>
+    <script type="text/javascript" src="knowledge.js"></script>
+    <script type="text/javascript" src="all.js"></script>
+</body>
+</html>
