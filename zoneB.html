@@ -295,53 +295,33 @@ html { scroll-behavior: smooth; }
                 <span><a class="gobackbutton" href="info.html">最新消息</a></span>
                 <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
         </div>
-        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const wrapper = document.getElementById('floating-wrapper');
-        const toggleBtn = document.getElementById('menu-toggle');
-        const navItems = document.querySelectorAll('.nav-item');
-        const activeText = document.getElementById('active-era-text');
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const wrapper = document.getElementById('floating-wrapper');
+                const toggleBtn = document.getElementById('menu-toggle');
+                const navItems = document.querySelectorAll('.nav-item');
 
-        // 切換選單顯示
-        toggleBtn.addEventListener('click', (e) => { 
-            e.stopPropagation(); 
-            wrapper.classList.toggle('show-menu'); 
-        });
+                // 1. 點擊按鈕切換選單顯示/隱藏
+                toggleBtn.addEventListener('click', function(e) { 
+                    e.stopPropagation(); 
+                    wrapper.classList.toggle('show-menu'); 
+                });
 
-        // 點擊空白處關閉選單
-        document.addEventListener('click', (e) => { 
-            if (!wrapper.contains(e.target)) wrapper.classList.remove('show-menu'); 
-        });
+                // 2. 點擊選單內的連結後，自動關閉選單
+                navItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        wrapper.classList.remove('show-menu');
+                    });
+                });
 
-        // 滾動追蹤 (Scroll Spy)
-        function scrollSpy() {
-            const sections = document.querySelectorAll('.exhibit');
-            let currentId = ""; 
-            let currentTitle = "導覽開始";
-
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                // 當區塊頂部距離視窗上方 250px 以內時視為當前區域
-                if (rect.top <= 250) {
-                    currentId = section.getAttribute('id');
-                    const titleNode = section.querySelector('.exhibit-title');
-                    if (titleNode) currentTitle = titleNode.innerText;
-                }
+                // 3. 點擊頁面其他地方時，關閉選單 (UX 優化)
+                document.addEventListener('click', function(e) { 
+                    if (!wrapper.contains(e.target)) {
+                        wrapper.classList.remove('show-menu'); 
+                    }
+                });
             });
-
-            if (activeText) activeText.innerText = currentTitle;
-            navItems.forEach(link => {
-                link.classList.remove('active');
-                if (currentId && link.getAttribute('href') === '#' + currentId) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', scrollSpy);
-        window.addEventListener('load', scrollSpy);
-    });
-</script>
+        </script>
     </body>
     <script>
         function changeThemeColor(color) {
