@@ -15,46 +15,48 @@
         
         <style>
             /* 漂浮 UI 樣式 (與 Zone A 相同) */
-            .floating-menu {
-                position: fixed;
-                right: 20px;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(255, 255, 255, 0.95);
-                padding: 15px 20px;
-                border-radius: 12px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-                z-index: 9999;
-                border-left: 5px solid var(--color1);
-                width: auto;
-                min-width: 140px;
-            }
+          .floating-menu {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff; /* 確保背景是不透明的純白 */
+    padding: 20px;
+    border-radius: 15px;
+    /* 增加更重的陰影，確保它能從背景跳出來 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    z-index: 999999; /* 提高到最高層級 */
+    border-left: 6px solid var(--color1, #6C0820); /* 增加預設深紅色防止變數失效 */
+    width: auto;
+    min-width: 150px;
+    display: block !important; /* 強制顯示 */
+}
 
-            .era-links {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                text-align: left;
-            }
+.era-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-            .era-links li {
-                margin: 12px 0;
-            }
+.era-links li {
+    margin: 15px 0;
+}
 
-            .era-links a {
-                text-decoration: none;
-                color: #666;
-                font-size: 15px;
-                transition: 0.3s;
-                display: block;
-            }
+.era-links a {
+    text-decoration: none;
+    color: #444; /* 字體顏色加深 */
+    font-size: 16px;
+    transition: 0.3s;
+    display: block;
+    font-weight: 500;
+}
 
-            .era-links a:hover, .era-links a.active {
-                color: var(--color1);
-                font-weight: 600;
-                transform: translateX(5px);
-            }
-
+/* 啟動狀態的顏色切換 */
+.era-links a.active {
+    color: var(--color1, #6C0820) !important;
+    font-weight: 700;
+    transform: translateX(8px);
+}
             /* 限制圖片不滿版 (依照您之前的要求) */
             .exhibit-img {
                 width: 45%;
