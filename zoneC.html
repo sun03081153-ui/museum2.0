@@ -1,151 +1,201 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="theme.js"></script>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>衣為心聲-現代發展與儀式性</title>
+    <script src="theme.js"></script>
 
     <script>
-
-        // 放在 head：在網頁畫出來前先套用顏色，防止閃爍
-
+        // 在網頁畫出來前先套用顏色，防止閃爍
         const savedColor = localStorage.getItem('kimonoThemeColor');
-
         if (savedColor) {
-
             document.documentElement.style.setProperty('--color1', savedColor);
-
         }
-
     </script>
-    </head>
-    <body class="kiwi-maru-regular">
-        <div class="banner hi-melody-regular">
-            <div class="hamburger">
-                <i class="ri-menu-line"></i>
-            </div>
-            <nav class="navbar">
-                <a href="index.html">首頁</a>
-                <a href="about.html">關於我們</a>
-                <a href="knowledge.html">策展理念</a>
-                <a href="info.html">最新消息</a>
-                <a class="active" href="content.html">進入展覽</a>
-            </nav>
-            <h1></h1>
-            <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">    
-                <path d="
-                    M0,60 
-                    C 240,90 480,30 720,60 
-                    C 960,90 1200,30 1440,60 
-                    L1440,120 L0,120 Z" 
-                    fill="var(--color1)" 
-                    transform="translate(0, 5)" />
-                <path d="
-                    M0,60 
-                    C 240,90 480,30 720,60 
-                    C 960,90 1200,30 1440,60 
-                    L1440,120 L0,120 Z" 
-                    fill="whitesmoke"
-                    transform="translate(0, 40)" />
-            </svg>
-        </div>
-        <div class="modern">
-            <div class="titles">
-                <span class="top-title">現代發展與儀式性</span>
-                <span class="exhibit-subtitle">探討明治維新後的洋服衝擊，以及和服如何從「生活必需品」轉型為現代「儀式性服飾（如畢業典禮之袴、婚禮之打掛）」的文化過程。</span>
-            </div>
-            <div class="exhibit">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">明治時代(西元1868年～1912年)</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-description">
-                       <p>明治維新帶來了日本服裝史上劇烈的「近代化」衝擊，這時期的論述呈現明顯的性別差異：</p>
-                        <p>女性的和服與「國粹」象徵：</p>
-                        <ul>
-                            <li>相對於男性的全面西化，明治政府對女性服裝（除宮中女性外）並無強制干涉。</li>
-                            <li>論述上，女性和服被赋予了象徵國家獨立自主、代表「國粹」（根植於傳統的國族之美）的優美意涵。女性穿著和服被視為保存日本傳統文化的載體，這種期待充滿了國粹主義色彩。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="exhibit">
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/modern/SeatedWoman.jpg" alt="Exhibit C1">
-                    </div>
-                    <div class="exhibit-description">
-                        <p>Seated Woman，日下部金兵衛，1870-1890年
-                            </p>
-                    </div>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/modern/明治男西裝.jpg" alt="Exhibit C2">
-                    </div>
-                    <div class="exhibit-description">
-                        <p>明治男西裝《明治4年12月，岩倉全權大使及副使抵達美國舊金山（桑港）後所拍攝的照片》
-                            </p>
-                    </div>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-img">
-                        <img src="./src/modern/菊花絲帶和服.jpg" alt="Exhibit C3">
-                    </div>
-                    <div class="exhibit-description">
-                        <p>菊花絲帶和服 _明治_東京國立博物館</p>
-                    </div>
-                </div>
-            </div>
-            <div class="exhibit">
-                <div class="exhibit-desc">
-                    <span class="exhibit-title">明治晚期的型態與美學變遷</span>
-                </div>
-                <div class="exhibit-item">
-                    <div class="exhibit-description">
-                       <p>明治晚期的和服並非一味守舊，而是展現了「傳統即流行」的融合趨勢：</p>
-                        <ul>
-                            <li>布料花樣的西洋化：受到西方流行影響，和服花樣從傳統的植物紋樣擴張到西洋花草、人物、風景，甚至是模仿西洋畫的繪法。這在當時的三越、松坂屋等大商號的圖錄中非常明顯。
-                            <li>語言的轉變：服飾界開始以片假名標示色彩與樣式（例如用「クリーム色」取代漢語表達），顯示西洋趣味的滲透。</li>
-                            <li>身體比例的調整：和服開始以洋服為範本，嘗試改變上、下身的比例。例如明治晚期到大正時期，流行將腰帶位置上移，使下半身顯得修長。</li>
-                            <li>改良運動：當時輿論也強調「和服改良」，試圖在傳統與現代合理主義（效率化）之間取得平衡。</li>
-                        </ul>
-                        <p>總結來說，該資料指出明治時期是和服「民族服裝化」的關鍵期，透過男性的洋服化與女性的和服國粹化，確立了近代日本人的集體認同與性別角色分工。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="exhibit-navigation">
-            <!-- 上一區 -->
-            <a href="zoneA.html" class="nav-btn prev">
-                <i class="ri-arrow-left-s-line"></i>
-                <div class="nav-text">
-                    <span>PREV</span>
-                    <p>江戶時期：階級與時尚</p>
-                </div>
-            </a>
 
-            <!-- 回到目錄 (選擇性) -->
-            <a href="content.html" class="nav-home">
-                <i class="ri-grid-fill"></i>
-            </a>
+    <style>
+        .exhibit-description {
+            display: flex !important;
+            flex-direction: column;
+            align-items: flex-start !important; /* 強制所有元素靠左 */
+            text-align: left !important;
+            justify-content: center;
+        }
+        .exhibit-description p, .exhibit-description ul {
+            text-align: justify !important; /* 長文章左右對齊較美觀 */
+            width: 100%;
+        }
+        .exhibit-description ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        .exhibit-description li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
 
+<body class="kiwi-maru-regular">
+    <div id="floating-wrapper" class="floating-wrapper">
+        <button id="menu-toggle" class="menu-toggle">
+            <i class="ri-history-line"></i>
+        </button>
+        <div id="floating-ui" class="floating-menu">
+            <ul class="era-links">
+                <li><a href="#era-meiji" class="nav-item">明治時代</a></li>
+                <li><a href="#era-gallery" class="nav-item">圖集與文物</a></li>
+                <li><a href="#era-late-meiji" class="nav-item">明治晚期變遷</a></li>
+            </ul>
         </div>
-        <div class="goback">  
-                <span><a class="gobackbutton" href="index.html">首頁</a></span>
-                <span><a class="gobackbutton" href="about.html">關於我們</a></span>
-                <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
-                <span><a class="gobackbutton" href="info.html">最新消息</a></span>
-                <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
+    </div>
+
+    <div class="banner hi-melody-regular">
+        <div class="hamburger">
+            <i class="ri-menu-line"></i>
         </div>
-    </body>
-    <script>
+        <nav class="navbar">
+            <a href="index.html">首頁</a>
+            <a href="about.html">關於我們</a>
+            <a href="knowledge.html">策展理念</a>
+            <a href="info.html">最新消息</a>
+            <a class="active" href="content.html">進入展覽</a>
+        </nav>
+        <h1>衣為心聲</h1>
+        <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">    
+            <path d="M0,60 C 240,90 480,30 720,60 C 960,90 1200,30 1440,60 L1440,120 L0,120 Z" fill="var(--color1)" transform="translate(0, 5)" />
+            <path d="M0,60 C 240,90 480,30 720,60 C 960,90 1200,30 1440,60 L1440,120 L0,120 Z" fill="whitesmoke" transform="translate(0, 40)" />
+        </svg>
+    </div>
+
+    <div class="modern">
+        <div class="titles">
+            <span class="top-title">現代發展與儀式性</span>
+            <span class="exhibit-subtitle">探討明治維新後的洋服衝擊，以及和服如何從「生活必需品」轉型為現代「儀式性服飾（如畢業典禮之袴、婚禮之打掛）」的文化過程。</span>
+        </div>
         
+        <div class="exhibit" id="era-meiji">
+            <div class="exhibit-desc">
+                <span class="exhibit-title">明治時代(西元1868年～1912年)</span>
+            </div>
+            <div class="exhibit-item">
+                <div class="exhibit-description">
+                   <p>明治維新帶來了日本服裝史上劇烈的「近代化」衝擊，這時期的論述呈現明顯的性別差異：</p>
+                    <p>女性的和服與「國粹」象徵：</p>
+                    <ul>
+                        <li>相對於男性的全面西化，明治政府對女性服裝（除宮中女性外）並無強制干涉。</li>
+                        <li>論述上，女性和服被赋予了象徵國家獨立自主、代表「國粹」（根植於傳統的國族之美）的優美意涵。女性穿著和服被視為保存日本傳統文化的載體，這種期待充滿了國粹主義色彩。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="exhibit" id="era-gallery">
+            <div class="exhibit-item">
+                <div class="exhibit-img">
+                    <img src="./src/modern/SeatedWoman.jpg" alt="Exhibit C1">
+                </div>
+                <div class="exhibit-description">
+                    <p>Seated Woman，日下部金兵衛，1870-1890年</p>
+                </div>
+            </div>
+            <div class="exhibit-item">
+                <div class="exhibit-img">
+                    <img src="./src/modern/明治男西裝.jpg" alt="Exhibit C2">
+                </div>
+                <div class="exhibit-description">
+                    <p>明治男西裝《明治4年12月，岩倉全權大使及副使抵達美國舊金山（桑港）後所拍攝的照片》</p>
+                </div>
+            </div>
+            <div class="exhibit-item">
+                <div class="exhibit-img">
+                    <img src="./src/modern/菊花絲帶和服.jpg" alt="Exhibit C3">
+                </div>
+                <div class="exhibit-description">
+                    <p>菊花絲帶和服 _明治_東京國立博物館</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="exhibit" id="era-late-meiji">
+            <div class="exhibit-desc">
+                <span class="exhibit-title">明治晚期的型態與美學變遷</span>
+            </div>
+            <div class="exhibit-item">
+                <div class="exhibit-description">
+                   <p>明治晚期的和服並非一味守舊，而是展現了「傳統即流行」的融合趨勢：</p>
+                    <ul>
+                        <li>布料花樣的西洋化：受到西方流行影響，和服花樣從傳統的植物紋樣擴張到西洋花草、人物、風景，甚至是模仿西洋畫的繪法。這在當時的三越、松坂屋等大商號的圖錄中非常明顯。</li>
+                        <li>語言的轉變：服飾界開始以片假名標示色彩與樣式（例如用「クリーム色」取代漢語表達），顯示西洋趣味的滲透。</li>
+                        <li>身體比例的調整：和服開始以洋服為範本，嘗試改變上、下身的比例。例如明治晚期到大正時期，流行將腰帶位置上移，使下半身顯得修長。</li>
+                        <li>改良運動：當時輿論也強調「和服改良」，試圖在傳統與現代合理主義（效率化）之間取得平衡。</li>
+                    </ul>
+                    <p>總結來說，該資料指出明治時期是和服「民族服裝化」的關鍵期，透過男性的洋服化與女性的和服國粹化，確立了近代日本人的集體認同與性別角色分工。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="exhibit-navigation">
+        <a href="zoneB.html" class="nav-btn prev">
+            <i class="ri-arrow-left-s-line"></i>
+            <div class="nav-text">
+                <span>PREV</span>
+                <p>江戶時期：階級與時尚</p>
+            </div>
+        </a>
+
+        <a href="content.html" class="nav-home">
+            <i class="ri-grid-fill"></i>
+        </a>
+    </div>
+
+    <div class="goback">  
+        <span><a class="gobackbutton" href="index.html">首頁</a></span>
+        <span><a class="gobackbutton" href="about.html">關於我們</a></span>
+        <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
+        <span><a class="gobackbutton" href="info.html">最新消息</a></span>
+        <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('floating-wrapper');
+            const toggleBtn = document.getElementById('menu-toggle');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            // 1. 點擊按鈕切換選單顯示/隱藏
+            toggleBtn.addEventListener('click', function(e) { 
+                e.stopPropagation(); 
+                wrapper.classList.toggle('show-menu'); 
+            });
+
+            // 2. 點擊連結後自動關閉選單
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    wrapper.classList.remove('show-menu');
+                });
+            });
+
+            // 3. 點擊頁面其他地方關閉選單
+            document.addEventListener('click', function(e) { 
+                if (!wrapper.contains(e.target)) {
+                    wrapper.classList.remove('show-menu'); 
+                }
+            });
+        });
+
+        // 主題顏色切換
+        function changeThemeColor(color) {
+            document.documentElement.style.setProperty('--color1', color);
+            localStorage.setItem('kimonoThemeColor', color);
+        }
     </script>
+</body>
 </html>
