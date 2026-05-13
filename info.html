@@ -1,121 +1,104 @@
 <!DOCTYPE html>
 <head>
+    <link rel="stylesheet" href="src\icomoon\style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>衣為心聲</title>
-    <script src="theme.js"></script>
+        <script src="theme.js"></script>
+
     <script>
+
         // 放在 head：在網頁畫出來前先套用顏色，防止閃爍
+
         const savedColor = localStorage.getItem('kimonoThemeColor');
+
         if (savedColor) {
+
             document.documentElement.style.setProperty('--color1', savedColor);
+
         }
+
     </script>
 </head>
-
-
-<style>
-
-</style>
 <body class="kiwi-maru-regular">
-    
-    <div class="main-banner hi-melody-regular">
-      <!-- <div class="theme-switcher">
-    <p>和服色彩體驗</p>
-    <div class="color-options">
-        <div class="color-btn" style="background-color: #6C0820;" onclick="changeThemeColor('#6C0820')"></div>
-        <div class="color-btn" style="background-color: #4A6935;" onclick="changeThemeColor('#4A6935')"></div>
-        <div class="color-btn" style="background-color: #3F5671;" onclick="changeThemeColor('#3F5671')"></div>
-    </div>
-</div> -->
+    <div class="banner hi-melody-regular">
         <div class="hamburger">
             <i class="ri-menu-line"></i>
         </div>
         <nav class="navbar">
-            <a class="active" href="index.html">首頁</a>
+            <a href="index.html">首頁</a>
             <a href="about.html">關於我們</a>
             <a href="knowledge.html">策展理念</a>
-            <a href="info.html">最新消息</a>
+            <a class="active" href="info.html">最新消息</a>
             <a href="content.html">進入展覽</a>
         </nav>
-        <h1>衣為心聲</h1>
-        <h2>江戶和服的社會語言</h2>
-        <div class="description">
-            <p>服飾，是解構日本社會結構的鑰匙。本展覽聚焦於和服結構從「大袖」至「小袖」的演變邏輯，梳理從彌生時代至現代的完整歷史脈絡，
-              探索日本民族如何將外來文化轉化為獨有的本土美學。展覽核心特別針對日本服飾發展的巔峰——「江戶時代」進行深度剖析。
-              透過對比未婚女性與平民町人妻的裝扮差異，我們將揭開當時法律、習俗如何規範不同階級與身分的穿著限制，並探究服飾如何作為一種「隱形語言」傳遞身分地位。
-                從明治維新的洋服衝擊到現代的儀式性轉型，這不僅是一場視覺饗宴，更是一場關於美學價值與社會規範的深度對話。</p>
-        </div>
-        <a class="start-main" href="content.html"><em>Start</em></a>
-        <svg class="wave-main" viewBox="0 0 1440 120" preserveAspectRatio="none">    
+        <h1>最新消息</h1>
+        <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">    
             <path d="
                 M0,60 
                 C 240,90 480,30 720,60 
                 C 960,90 1200,30 1440,60 
                 L1440,120 L0,120 Z" 
-                fill="var(--color1)"
+                fill="var(--color1)" 
+                transform="translate(0, 5)" />
+            <path d="
+                M0,60 
+                C 240,90 480,30 720,60 
+                C 960,90 1200,30 1440,60 
+                L1440,120 L0,120 Z" 
+                fill="whitesmoke"
                 transform="translate(0, 40)" />
-            </svg>
+        </svg>
     </div>
     
+    <!-- <div class="daily_knowledge">
+        <div>
+            <span class="icon-bulb"></span>
+            <span style="font-size: 1.125rem;"><b>今日小知識</b></span>
+        </div>    
+        <span>狗狗的鼻紋就像人類的指紋，每一隻都獨一無二，可用來辨識身分 </span>
+    </div> -->
+    <div class="info-content">
+        <div class="news">
+            <div class="titles">
+                <span class="title">最新的活動、公告都在這裡！</span>
+            </div>
+            <div class="articles">
+            </div>
+            <div class="pagination">
+                <button class="lastPage"><<</button>
+                <ul>
+                    <li class="link active" value="1">1</li>
+                    <li class="link" value="2">2</li>
+                    <li>...</li>
+                </ul>
+                <button class="nextPage">>></button>
+            </div>
+        </div>
+    </div>
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalTitle">標題</h2>
+            <p id="modalDate" style="color: #888;"></p>
+            <hr>
+            <div id="modalBody">內容載入中...</div>
+        </div>
+    </div>
 
     <div class="goback">  
-        <span><a class="gobackbutton" href="index.html">首頁</a></span>
-        <span><a class="gobackbutton" href="about.html">關於我們</a></span>
-        <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
-        <span><a class="gobackbutton" href="info.html">最新消息</a></span>
-        <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
+            <span><a class="gobackbutton" href="index.html">首頁</a></span>
+            <span><a class="gobackbutton" href="about.html">關於我們</a></span>
+            <span><a class="gobackbutton" href="knowledge.html">策展理念</a></span>
+            <span><a class="gobackbutton" href="info.html">最新消息</a></span>
+            <span><a class="gobackbutton" href="contact.html">聯絡我們</a></span>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="./data/knowledges.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="all.js"></script>
 </body>
-<script>
-  // 1. 註冊插件
-  gsap.registerPlugin(ScrollTrigger);
-
-  // 2. 建立動畫
-  gsap.from(".description p", {
-    // 動態的起點狀態
-    opacity: 0,
-    y: 0,             // 從下方 30px 的位置開始
-    duration: 1.2,     // 持續 1.2 秒
-    ease: "power2.out",// 平滑的減速曲線
-    stagger: 0.3,      // 讓元素一個接一個出現（間隔 0.3 秒）
-    
-    // 設定觸發條件
-    scrollTrigger: {
-      trigger: ".description", // 當看到這個區塊時觸發
-      start: "top 50%",        // 當區塊頂部到達螢幕 80% 高度時開始
-      toggleActions: "play none none none", // 只播放一次
-      markers: false, // 顯示觸發點（開發時使用，完成後可以移除）
-    }
-  });
-  gsap.from(".start-main", {
-    scrollTrigger: {
-      trigger: ".start-main", 
-      start: "top 80%",       // 比文字稍晚一點觸發
-      markers: false,
-      toggleActions: "play none none reverse"
-    },
-    opacity: 0,
-    scale: 0.5,               // 從一半大小開始變大
-    duration: 0.8,
-    ease: "back.out(1.7)"     // 帶有一點點彈跳感的效果
-  });
-  
-  // 3. 切換顏色的函數（這裡的名字要跟 onclick 裡面的一模一樣）
-  function changeThemeColor(color) {
-      // 立即改變畫面上所有的 --color1 變數
-      document.documentElement.style.setProperty('--color1', color);
-      // 存入瀏覽器紀錄，讓其他分頁也能讀取
-      localStorage.setItem('kimonoThemeColor', color);
-  }
-</script>
 </html>
